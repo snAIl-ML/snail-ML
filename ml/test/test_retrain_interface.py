@@ -1,4 +1,5 @@
-import sys
+import os
+import random
 import path_helper
 
 from retrain_interface import get_command, run_bash_command
@@ -30,7 +31,8 @@ def test_get_command_generates_command_string_properly():
         "'--saved_model_dir' ./model/exported_graph")
     assert(command_string) == expected_return
 
-def test_run_bash_command_runs_command(capsys):
-    run_bash_command("echo 'print this'")
-    captured = capsys.readouterr()
-    assert captured.out == "print this\n"
+def test_run_bash_command_runs_command():
+    filename = "testfile" + str(random.random())
+    run_bash_command("touch " + filename)
+    assert (filename in os.listdir('.')) == True
+    run_bash_command("rm " + filename)
