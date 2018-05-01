@@ -1,11 +1,12 @@
 import os
 from module_urls import module_urls
 
-def get_command(
+def get_retrain_command(
     images_path,
     module_url=module_urls["inception_v3"],
     model_path="./retrained_model",
     model_name="retrained_model"):
+
     command_string = ("python retrain.py \\" +
         "--image_dir " + images_path + " \\" +
         "--tfhub_module " + module_url + " \\" +

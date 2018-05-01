@@ -1,3 +1,4 @@
 {
+  "test/test_retrain_interface.py": true,
   "test/test_retrain_interface.py::test_run_command_runs_command": true
 }
