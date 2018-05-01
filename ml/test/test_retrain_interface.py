@@ -21,8 +21,8 @@ def test_get_command_generates_command_string_properly():
     model_name = "model_name"
     command_string = get_command(images_path, module_url, model_path, model_name)
     expected_return = ("python retrain.py \\" +
-        "--tfhub_module test_url \\" +
         "--image_dir test_dir \\" +
+        "--tfhub_module test_url \\" +
         "--bottleneck_dir ./model/bottleneck \\" +
         "--output_graph ./model/model_name.pb \\" +
         "--output_labels ./model/model_name_labels.txt \\" +
