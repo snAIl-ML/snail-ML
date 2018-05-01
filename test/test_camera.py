@@ -15,6 +15,7 @@ class mock_camera(object):
     def release(self):
         return True
 
+
 class mock_image_handler(object):
 
     def VideoCapture(self):
@@ -23,13 +24,31 @@ class mock_image_handler(object):
     def read_from_camera(self, cam):
         return [True, 'image']
 
-def test_take_photo():
-    assert(camera.take_photo(mock_image_handler)) == 'image'
+    def imwrite(image_name, image_data):
+        return True
+
+class mock_datetime(object):
+    def now():
+        return datetime.date(1943,3, 13)
+
+def test_create_directory(mocker):
+    def save_photo(makedirs):
+        os.makedirs('directory_path')
+    stub = mocker.stub(name='os.makedirs')
+    camera.create_directory(stub)
+    stub.assert_called_once_with('directory_path')
+    pass
+
+def test_grab_image_data():
+    assert(camera.grab_image_data(mock_image_handler)) == 'image'
 
 def test_create_path():
     assert(camera.create_path('forward')) ==  'images/forward'
 
 def test_create_directory():
-    camera.create_directory('test')
-    assert(os.path.exists('test')) == True
-    pass
+    camera.create_directory('test directory')
+    assert(os.path.exists('test directory')) == True
+    os.rmdir('test directory')
+
+def test_save_photo():
+    assert(camera.save_photo('dir_path', 'image_data', mock_image_handler)) == True
