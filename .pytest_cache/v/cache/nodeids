@@ -1,0 +1,5 @@
+[
+  "test/test_camera.py::test_take_photo",
+  "test/test_camera.py::test_create_path",
+  "test/test_camera.py::test_create_directory"
+]

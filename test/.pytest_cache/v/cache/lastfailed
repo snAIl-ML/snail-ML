@@ -1,0 +1,11 @@
+{
+  "camera_test.py::CameraTest": true,
+  "test_camera.py": true,
+  "test_camera.py::test_b_not_called": true,
+  "test_camera.py::test_create_path": true,
+  "test_camera.py::test_delete_camera": true,
+  "test_camera.py::test_init_camera": true,
+  "test_camera.py::test_read_from_camera": true,
+  "test_camera.py::test_release_camera": true,
+  "test_camera.py::test_release_camera_called": true
+}
