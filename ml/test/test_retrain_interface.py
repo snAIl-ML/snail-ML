@@ -28,7 +28,7 @@ def test_get_command_generates_command_string_properly():
         "--output_labels ./model/model_name_labels.txt \\" +
         "--intermediate_output_graphs_dir ./model/intermediate_graph/ \\" +
         "--summaries_dir ./model/retrain_logs \\" +
-        "'--saved_model_dir' ./model/exported_graph")
+        "--saved_model_dir ./model/exported_graph")
     assert(command_string) == expected_return
 
 def test_run_bash_command_runs_command():
