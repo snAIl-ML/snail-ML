@@ -20,3 +20,14 @@ def get_retrain_command(
 
 def run_bash_command(command):
     os.system(command)
+
+def get_classify_command(model_path, model_name, img_dimensions, img_path):
+    command_string = ("python label_image.py \\" +
+        "--graph  " + model_path + "/" + model_name + ".pb \\" +
+        "--labels " + model_path + "/" + model_name + "_labels.txt \\" +
+        "--input_layer Placeholder \\" +
+        "--output_layer final_result \\" +
+        "--input_height " + str(img_dimensions[0]) + " \\" +
+        "--input_width " + str(img_dimensions[1]) + " \\" +
+        "--image " + img_path)
+    return command_string
