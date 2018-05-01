@@ -1,3 +1,5 @@
 {
-  "test/test_retrain_interface.py": true
+  "test/test_retrain_interface.py::test_get_command_generates_command_string_properly": true,
+  "test/test_retrain_interface.py::test_run_bash_command_runs_command": true,
+  "test/test_retrain_interface.py::test_run_command_runs_command": true
 }

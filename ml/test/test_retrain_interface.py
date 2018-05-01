@@ -1,4 +1,7 @@
-from retrain_interface import get_command, run_command
+import sys
+import path_helper
+
+from retrain_interface import get_command, run_bash_command
 
 class MyOutput(object):
     def __init__(self):
@@ -15,7 +18,7 @@ def test_get_command_generates_command_string_properly():
     module_url = "test_url"
     model_path = "./model"
     model_name = "model_name"
-    command_string = get_command(images_path, module_url, model_path)
+    command_string = get_command(images_path, module_url, model_path, model_name)
     expected_return = ("python retrain.py \\" +
         "--tfhub_module test_url \\" +
         "--image_dir test_dir \\" +
@@ -27,13 +30,7 @@ def test_get_command_generates_command_string_properly():
         "'--saved_model_dir' ./model/exported_graph")
     assert(command_string) == expected_return
 
-def test_run_command_runs_command():
-    stdout_org = sys.stdout
-    my_stdout = MyOutput()
-    try:
-        sys.stdout = my_stdout
-        run_command("echo 'print_this'")
-    finally:
-        sys.stdout = stdout_org
-
-    assert(str(my_stdout)) == "print this"
+def test_run_bash_command_runs_command(capsys):
+    run_bash_command("echo 'print this'")
+    captured = capsys.readouterr()
+    assert captured.out == "print this\n"
