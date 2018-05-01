@@ -31,3 +31,6 @@ def get_classify_command(model_path, model_name, img_dimensions, img_path):
         "--input_width " + str(img_dimensions[1]) + " \\" +
         "--image " + img_path)
     return command_string
+
+# ./flower_photos/roses/102501987_3cdb8e5394_n.jpg
+# ./flower_photos/daisy/21652746_cc379e0eea_m.jpg
