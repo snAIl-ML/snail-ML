@@ -32,6 +32,9 @@ class Controller(object):
         self.car.reverse(0.2)
 
     def right(self):
+        new_path = self.cam.create_path("turn_right")
+        self.cam.create_directory(new_path)
+        self.cam.move_photo(self.photo_path, new_path)
         self.car.turn_right(0.2)
 
     def left(self):
