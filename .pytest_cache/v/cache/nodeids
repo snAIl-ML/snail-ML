@@ -9,5 +9,6 @@
   "test/test_controller.py::test_up_to_call_forward_and_store_photo",
   "test/test_controller.py::test_down_to_call_reverse_and_store_photo",
   "test/test_controller.py::test_right_to_call_turn_right_and_store_photo",
-  "test/test_controller.py::test_left_to_call_turn_left_and_store_photo"
+  "test/test_controller.py::test_left_to_call_turn_left_and_store_photo",
+  "test/test_controller.py::test_piv_right_to_call_pivot_right_and_store_photo"
 ]

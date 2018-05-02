@@ -61,12 +61,14 @@ def test_left_to_call_turn_left_and_store_photo(mocker):
     controller.left()
     assert car.turn_left.called
     assert mock_cam.paths == ["replace me", "turn_left"]
-#
-# def test_piv_right_to_call_pivot_right_and_store_photo(mocker):
-#     mocker.patch.object(car, 'pivot_right')
-#     controller = Controller()
-#     controller.piv_right()
-#     assert car.pivot_right.called
+
+def test_piv_right_to_call_pivot_right_and_store_photo(mocker):
+    mocker.patch.object(car, 'pivot_right')
+    mock_cam = mock_camera()
+    controller = Controller(cam=mock_cam)
+    controller.piv_right()
+    assert car.pivot_right.called
+    assert mock_cam.paths == ["replace me", "pivot_right"]
 #
 # def test_piv_left_to_call_pivot_left_and_store_photo(mocker):
 #     mocker.patch.object(car, 'pivot_left')
