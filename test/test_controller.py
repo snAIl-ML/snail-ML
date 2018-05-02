@@ -8,40 +8,42 @@ import car
 def test_create_temp_photo_to_call_save_photo(mocker):
     mocker.patch.object(camera, 'save_photo')
     Controller.create_temp_photo('')
-    camera.save_photo.assert_called
+    assert camera.save_photo.called
 
-def test_up_to_call_forward(mocker):
+def test_up_to_call_forward_and_store_photo(mocker):
     mocker.patch.object(car, 'forward')
+    mocker.patch.object(camera, 'move_photo')
     controller = Controller()
     controller.up()
-    car.forward.assert_called
+    assert car.forward.called
+    assert camera.move_photo.called
 
-def test_down_to_call_reverse(mocker):
+def test_down_to_call_reverse_and_store_photo(mocker):
     mocker.patch.object(car, 'reverse')
     controller = Controller()
     controller.down()
-    car.reverse.assert_called
+    assert car.reverse.called
 
-def test_right_to_call_turn_right(mocker):
+def test_right_to_call_turn_right_and_store_photo(mocker):
     mocker.patch.object(car, 'turn_right')
     controller = Controller()
     controller.right()
-    car.turn_right.assert_called
+    assert car.turn_right.called
 
-def test_left_to_call_turn_left(mocker):
+def test_left_to_call_turn_left_and_store_photo(mocker):
     mocker.patch.object(car, 'turn_left')
     controller = Controller()
     controller.left()
-    car.turn_left.assert_called
+    assert car.turn_left.called
 
-def test_piv_right_to_call_pivot_right(mocker):
+def test_piv_right_to_call_pivot_right_and_store_photo(mocker):
     mocker.patch.object(car, 'pivot_right')
     controller = Controller()
     controller.piv_right()
-    car.pivot_right.assert_called
+    assert car.pivot_right.called
 
-def test_piv_left_to_call_pivot_left(mocker):
+def test_piv_left_to_call_pivot_left_and_store_photo(mocker):
     mocker.patch.object(car, 'pivot_left')
     controller = Controller()
     controller.piv_left()
-    car.pivot_left.assert_called
+    assert car.pivot_left.called
