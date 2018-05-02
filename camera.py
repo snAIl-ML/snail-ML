@@ -20,4 +20,7 @@ def create_directory(dir_path):
 
 def save_photo(dir_path, image_data, vision = cv2):
     image_name_and_path = dir_path + '/' + str(datetime.now().strftime('%Y-%m-%d %H-%M-%S')) + '.png'
-    return vision.imwrite(image_name_and_path, image_data)
+    vision.imwrite(image_name_and_path, image_data)
+
+def move_photo(old_path, new_path):
+    os.rename(old_path, new_path)
