@@ -23,7 +23,6 @@ def init():
     GPIO.setup(rear_echo, GPIO.IN)
     GPIO.setup(rear_trigger, GPIO.OUT)
 
-
 def forward(time_frame):
     print('GOING FORWARD')
     init()
@@ -33,6 +32,7 @@ def forward(time_frame):
     GPIO.output(26, True) # left side wheels / input 3 & 4
     time.sleep(time_frame)
     GPIO.cleanup()
+    return True
 
 def pivot_left(time_frame):
     print('Pivoting left')
@@ -43,6 +43,7 @@ def pivot_left(time_frame):
     GPIO.output(26, False)
     time.sleep(time_frame)
     GPIO.cleanup()
+    return True
 
 def pivot_right(time_frame):
     print('Pivoting right')
@@ -53,6 +54,7 @@ def pivot_right(time_frame):
     GPIO.output(26, True)
     time.sleep(time_frame)
     GPIO.cleanup()
+    return True
 
 def reverse(time_frame):
     print('REVERSING')
@@ -63,6 +65,7 @@ def reverse(time_frame):
     GPIO.output(26, False) # left side wheels / input 3 & 4
     time.sleep(time_frame)
     GPIO.cleanup()
+    return True
 
 def turn_right(time_frame):
     print('turning right')
@@ -73,6 +76,7 @@ def turn_right(time_frame):
     GPIO.output(26, True)
     time.sleep(time_frame)
     GPIO.cleanup()
+    return True
 
 def turn_left(time_frame):
     print('turning left')
@@ -83,11 +87,4 @@ def turn_left(time_frame):
     GPIO.output(26, False)
     time.sleep(time_frame)
     GPIO.cleanup()
-
-
-#
-# init()
-# while (distance(front_echo, front_trigger) > 25):
-#     forward(0.2)
-# pivot_right(3)
-# pivot_left(3)
+    return True
