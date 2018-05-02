@@ -1,12 +1,7 @@
 import os
 from module_urls import module_urls
 
-def get_retrain_command(
-    images_path,
-    module_url=module_urls["inception_v3"],
-    model_path="./retrained_model",
-    model_name="retrained_model"):
-
+def get_retrain_command(images_path, module_url, model_path, model_name):
     command_string = ("python retrain.py \\" +
         "--image_dir " + images_path + " \\" +
         "--tfhub_module " + module_url + " \\" +
@@ -21,14 +16,10 @@ def get_retrain_command(
 def run_bash_command(command):
     os.system(command)
 
-def get_classify_command(model_path, model_name, img_path):
-    command_string = ("python label_image.py \\" +
-        "--graph  " + model_path + "/" + model_name + ".pb \\" +
-        "--labels " + model_path + "/" + model_name + "_labels.txt \\" +
-        "--input_layer Placeholder \\" +
-        "--output_layer final_result \\" +
-        "--image " + img_path)
-    return command_string
-
-def classify_image(model_path, model_name, img_path):
-    run_bash_command(get_classify_command(model_path, model_name, img_path))
+def retrain_model(
+    images_path,
+    module_url=module_urls["inception_v3"],
+    model_path="./retrained_model",
+    model_name="retrained_model"
+    ):
+    run_bash_command(get_retrain_command(images_path, module_url, model_path, model_name))
