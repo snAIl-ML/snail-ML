@@ -1,4 +1,6 @@
-import turtle
+import tty
+import sys
+import termios
 import car as car
 import camera
 
@@ -8,10 +10,6 @@ class Controller(object):
         self.cam = cam
         self.photo_path = "replace me"
         self.car = car
-        turtle.setup(400,500)
-        self.window = turtle.Screen()
-        self.window.title('snAIl Controller')
-        self.window.bgcolor('blue')
 
     def create_temp_photo(self):
         img_data = self.cam.grab_image_data()
@@ -71,21 +69,29 @@ class Controller(object):
         self.car.pivot_left(0.2)
         self.create_temp_photo()
 
-    def exit(self):
-        self.window.bye()
+def user_control_loop():
+    #Backing up original attributes
+    orig_settings = termios.tcgetattr(sys.stdin)
+    #Setting up stdin in raw
+    tty.setraw(sys.stdin)
+    C = Controller()
+    C.create_temp_photo()
+    comm = 0
+    while comm != "x":
+        comm =  sys.stdin.read(1)[0]
+        if comm == "w": C.up()
+        elif comm == "s": C.down()
+        elif comm == "a": C.left()
+        elif comm == "d": C.right()
+        elif comm == "q": C.piv_left()
+        elif comm == "e": C.piv_right()
 
-def main():
-    w = Controller()
-    w.create_temp_photo()
-    w.window.onkey(w.up, 'Up')
-    w.window.onkey(w.down, 'Down')
-    w.window.onkey(w.right, 'Right')
-    w.window.onkey(w.left, 'Left')
-    w.window.onkey(w.piv_right, '/')
-    w.window.onkey(w.piv_left, '.')
-    w.window.onkey(w.exit, 'q')
-    w.window.listen()
-    w.window.mainloop()
+    #Restoring original attributes of stdin
+    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
+
+def set_mode():
+    get_mode = input("chose mode: 1 = user, 2 = AI ")
+    if get_mode == "1": user_control_loop()
 
 if __name__ == "__main__":
-   main()
+   set_mode()
