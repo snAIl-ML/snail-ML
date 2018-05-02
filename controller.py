@@ -4,7 +4,9 @@ import camera
 
 class Controller(object):
 
-    def __init__(self, car = car):
+    def __init__(self, car=car, cam=camera):
+        self.cam = cam
+        self.photo_path = "replace me"
         self.car = car
         turtle.setup(400,500)
         self.window = turtle.Screen()
@@ -12,15 +14,21 @@ class Controller(object):
         self.window.bgcolor('blue')
 
     def create_temp_photo(self):
-        img_data = camera.grab_image_data()
-        dir_path = camera.create_path("temp")
-        camera.create_directory(dir_path)
-        return camera.save_photo(dir_path, img_data)
+        img_data = self.cam.grab_image_data()
+        dir_path = self.cam.create_path("temp")
+        self.cam.create_directory(dir_path)
+        self.photo_path = self.cam.save_photo(dir_path, img_data)
 
     def up(self):
+        new_path = self.cam.create_path("forward")
+        self.cam.create_directory(new_path)
+        self.cam.move_photo(self.photo_path, new_path)
         self.car.forward(0.2)
 
     def down(self):
+        new_path = self.cam.create_path("reverse")
+        self.cam.create_directory(new_path)
+        self.cam.move_photo(self.photo_path, new_path)
         self.car.reverse(0.2)
 
     def right(self):
