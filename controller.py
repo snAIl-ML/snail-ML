@@ -17,6 +17,10 @@ class Controller(object):
         camera.create_directory(dir_path)
         camera.save_photo(dir_path, img_data)
 
+    def move_photo(self, path):
+        dir_path = camera.create_path(action)
+        camera.create_directory(dir_path)
+
     def up(self):
         self.create_photo('forward')
         self.car.forward(0.2)

@@ -1,5 +1,6 @@
 import context
-from mock import patch
+import pytest
+from pytest_mock import mocker
 import camera
 import time
 import os
@@ -40,3 +41,7 @@ def test_create_path():
 
 def test_save_photo():
     assert(camera.save_photo('dir_path', 'image_data', mock_image_handler)) == True
+
+def test_move_photo(mocker):
+    mocker.patch.object(os, 'rename')
+    camera.move_photo('this', 'that')

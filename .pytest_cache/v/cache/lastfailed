@@ -1,4 +1,5 @@
 {
+  "test/test_camera.py::test_move_photo": true,
   "test/test_camera.py::test_stub": true,
   "test/test_camera.py::test_take_photo": true,
   "test/test_camera.py::test_take_picture1": true,
