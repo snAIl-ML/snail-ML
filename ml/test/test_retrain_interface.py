@@ -31,16 +31,12 @@ def test_run_bash_command_runs_command():
 def test_get_classify_command_generates_command_string_properly():
     model_path = "./model"
     model_name = "model_name"
-    img_dimensions = [224, 224]
     img_path = "image_path"
-    command_string = get_classify_command(
-    model_path, model_name, img_dimensions, img_path)
+    command_string = get_classify_command(model_path, model_name, img_path)
     expected_return = ("python label_image.py \\" +
         "--graph  ./model/model_name.pb \\" +
         "--labels ./model/model_name_labels.txt \\" +
         "--input_layer Placeholder \\" +
         "--output_layer final_result \\" +
-        "--input_height 224 \\" +
-        "--input_width 224 \\" +
         "--image image_path")
     assert(command_string) == expected_return

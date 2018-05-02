@@ -89,3 +89,11 @@ optional arguments:
                        for some publicly available ones.
  --saved_model_dir SAVED_MODEL_DIR
                        Where to save the exported graph.
+cat_command  = get_classify_command ("./catdog_model", "catdog_model", [229, 229], "~/Desktop/temp/cat2.png")
+
+python label_image.py \
+  --graph  ./catdog_model/catdog_model.pb \
+  --labels ./catdog_model/catdog_model_labels.txt \
+  --input_layer Placeholder \
+  --output_layer final_result \
+  --image ~/Desktop/temp/bun.png
