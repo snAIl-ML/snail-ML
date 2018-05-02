@@ -1,1 +1,6 @@
-[]
+[
+  "test_camera.py::test_grab_image_data",
+  "test_camera.py::test_create_path",
+  "test_camera.py::test_create_directory",
+  "test_camera.py::test_save_photo"
+]

@@ -27,10 +27,6 @@ class mock_image_handler(object):
     def imwrite(image_name, image_data):
         return True
 
-class mock_datetime(object):
-    def now():
-        return datetime.date(1943,3, 13)
-
 def test_create_directory(mocker):
     def save_photo(makedirs):
         os.makedirs('directory_path')
