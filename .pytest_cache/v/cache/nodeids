@@ -3,6 +3,7 @@
   "test/test_camera.py::test_grab_image_data",
   "test/test_camera.py::test_create_path",
   "test/test_camera.py::test_save_photo",
+  "test/test_camera.py::test_save_photo_returns_the_save_path",
   "test/test_camera.py::test_move_photo",
   "test/test_controller.py::test_create_photo_to_call_save_photo",
   "test/test_controller.py::test_up_to_call_forward",

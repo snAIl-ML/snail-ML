@@ -1,9 +1,13 @@
 import context
 import pytest
+from unittest.mock import patch
 from pytest_mock import mocker
 import camera
+from datetime import datetime
 import time
 import os
+
+faketimenow = time.localtime(time.mktime((2018, 1, 1, 0, 3, 0, 0, 1, 0)))
 
 class mock_camera(object):
 
@@ -43,6 +47,15 @@ def test_save_photo(mocker):
     mocker.patch.object(mock_image_handler, 'imwrite')
     camera.save_photo('dir_path', 'image_data', mock_image_handler)
     mock_image_handler.imwrite.assert_called
+
+@patch('time.localtime')
+def test_save_photo_returns_the_save_path(mock_time):
+    mock_time.return_value = faketimenow
+    timestring = time.strftime('%Y-%m-%d %H-%M-%S', faketimenow)
+    assert(
+        camera.save_photo('dir_path', 'image_data', mock_image_handler)
+    ) == "dir_path/" + timestring + ".png"
+
 
 def test_move_photo(mocker):
     mocker.patch.object(os, 'rename')

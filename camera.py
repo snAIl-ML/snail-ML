@@ -1,4 +1,3 @@
-from datetime import datetime
 import time
 import cv2
 import os
@@ -18,9 +17,11 @@ def create_directory(dir_path):
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
 
-def save_photo(dir_path, image_data, vision = cv2):
-    image_name_and_path = dir_path + '/' + str(datetime.now().strftime('%Y-%m-%d %H-%M-%S')) + '.png'
+def save_photo(dir_path, image_data, vision=cv2):
+    image_name_and_path = (dir_path + '/' +
+        time.strftime('%Y-%m-%d %H-%M-%S', time.localtime()) + '.png')
     vision.imwrite(image_name_and_path, image_data)
+    return image_name_and_path
 
 def move_photo(old_path, new_path):
     os.rename(old_path, new_path)

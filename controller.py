@@ -11,15 +11,12 @@ class Controller(object):
         self.window.title('snAIl Controller')
         self.window.bgcolor('blue')
 
-    def create_photo(self, action):
+    def create_photo(self):
         img_data = camera.grab_image_data()
-        dir_path = camera.create_path(action)
+        dir_path = camera.create_path("temp")
         camera.create_directory(dir_path)
         camera.save_photo(dir_path, img_data)
-
-    def move_photo(self, path):
-        dir_path = camera.create_path(action)
-        camera.create_directory(dir_path)
+        return dir_path
 
     def up(self):
         self.create_photo('forward')
