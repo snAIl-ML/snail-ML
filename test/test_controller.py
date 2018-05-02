@@ -3,7 +3,7 @@ import mock
 import pytest
 from pytest_mock import mocker
 import camera
-import car # to be renamed car
+import car
 
 def test_create_photo_to_call_save_photo(mocker):
     mocker.patch.object(camera, 'save_photo')

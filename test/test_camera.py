@@ -27,24 +27,16 @@ class mock_image_handler(object):
     def imwrite(image_name, image_data):
         return True
 
-def test_create_directory(mocker):
-    def save_photo(makedirs):
-        os.makedirs('directory_path')
-    stub = mocker.stub(name='os.makedirs')
-    camera.create_directory(stub)
-    stub.assert_called_once_with('directory_path')
-    pass
+def test_create_directory_creates_image_directory_if_doesnt_exist(mocker):
+    mocker.patch.object(os, 'makedirs')
+    camera.create_directory('test directory')
+    os.makedirs.assert_called
 
 def test_grab_image_data():
     assert(camera.grab_image_data(mock_image_handler)) == 'image'
 
 def test_create_path():
     assert(camera.create_path('forward')) ==  'images/forward'
-
-def test_create_directory():
-    camera.create_directory('test directory')
-    assert(os.path.exists('test directory')) == True
-    os.rmdir('test directory')
 
 def test_save_photo():
     assert(camera.save_photo('dir_path', 'image_data', mock_image_handler)) == True

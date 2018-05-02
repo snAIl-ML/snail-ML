@@ -15,7 +15,7 @@ def init():
     GPIO.setup(13, GPIO.OUT) # right side motor
     GPIO.setup(19, GPIO.OUT) # left side motor
     GPIO.setup(26, GPIO.OUT) # left side motor
-    
+
     # front sensor setup
     GPIO.setup(front_echo, GPIO.IN)
     GPIO.setup(front_trigger, GPIO.OUT)
@@ -84,17 +84,10 @@ def turn_left(time_frame):
     time.sleep(time_frame)
     GPIO.cleanup()
 
-init()
 
-####### move forward until hazzard found, then reverse and turn right
-# while(distance(front_echo, front_trigger) > 25 ):
-#    forward(0.5)
-
-while (distance(front_echo, front_trigger) > 25):
-    forward(0.2)
-
-#reverse(2)
-#turn_right(3)
-
-pivot_right(3)
-pivot_left(3)
+#
+# init()
+# while (distance(front_echo, front_trigger) > 25):
+#     forward(0.2)
+# pivot_right(3)
+# pivot_left(3)
