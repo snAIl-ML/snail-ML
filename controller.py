@@ -50,6 +50,9 @@ class Controller(object):
         self.car.pivot_right(0.2)
 
     def piv_left(self):
+        new_path = self.cam.create_path("pivot_left")
+        self.cam.create_directory(new_path)
+        self.cam.move_photo(self.photo_path, new_path)
         self.car.pivot_left(0.2)
 
     def exit(self):
