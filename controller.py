@@ -92,6 +92,9 @@ def user_control_loop():
 def set_mode():
     get_mode = input("chose mode: 1 = user, 2 = AI ")
     if get_mode == "1": user_control_loop()
+    if get_mode == "2":
+        print ("AI mode isn't written yet!")
+        set_mode()
 
 if __name__ == "__main__":
    set_mode()
