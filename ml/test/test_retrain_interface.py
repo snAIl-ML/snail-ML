@@ -4,16 +4,6 @@ import path_helper
 
 from retrain_interface import get_retrain_command, run_bash_command, get_classify_command
 
-class MyOutput(object):
-    def __init__(self):
-        self.data = []
-
-    def write(self, s):
-        self.data.append(s)
-
-    def __str__(self):
-        return "".join(self.data)
-
 def test_get_retrain_command_generates_command_string_properly():
     images_path = "test_dir"
     module_url = "test_url"
