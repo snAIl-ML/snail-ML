@@ -25,6 +25,9 @@ class mock_camera(object):
     def move_photo(self, old_path, new_path):
         self.paths = [old_path, new_path]
 
+    def create_return_path(self, path):
+        return path
+
 def test_create_temp_photo_to_call_save_photo_and_store_path(mocker):
     controller = Controller(cam=mock_camera())
     controller.create_temp_photo()
