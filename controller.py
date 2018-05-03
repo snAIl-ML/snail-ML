@@ -3,6 +3,7 @@ import sys
 import termios
 import car as car
 import camera
+import turtle
 
 class Controller(object):
 
@@ -69,6 +70,29 @@ class Controller(object):
         self.car.pivot_left(0.2)
         self.create_temp_photo()
 
+    def start_turtle(self):
+        turtle.setup(400,500)
+        self.window = turtle.Screen()
+        self.window.title('snAIl Controller')
+        self.window.bgcolor('blue')
+
+    def exit_turtle(self):
+        self.window.bye()
+
+def turtle_loop():
+    w = Controller()
+    w.create_temp_photo()
+    w.start_turtle()
+    w.window.onkey(w.up, 'Up')
+    w.window.onkey(w.down, 'Down')
+    w.window.onkey(w.right, 'Right')
+    w.window.onkey(w.left, 'Left')
+    w.window.onkey(w.piv_right, '/')
+    w.window.onkey(w.piv_left, '.')
+    w.window.onkey(w.exit_turtle, 'q')
+    w.window.listen()
+    w.window.mainloop()
+
 def user_control_loop():
     #Backing up original attributes
     orig_settings = termios.tcgetattr(sys.stdin)
@@ -90,9 +114,10 @@ def user_control_loop():
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
 
 def set_mode():
-    get_mode = input("chose mode: 1 = user, 2 = AI ")
+    get_mode = input("chose mode: 1 = user, 2 = user(w. turtle), 3 = AI ")
     if get_mode == "1": user_control_loop()
-    if get_mode == "2":
+    if get_mode == "2": turtle_loop()
+    if get_mode == "3":
         print ("AI mode isn't written yet!")
         set_mode()
 
