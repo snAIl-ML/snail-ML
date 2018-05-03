@@ -1,6 +1,4 @@
-import tty
 import sys
-import termios
 import car as car
 import camera
 import turtle
@@ -84,30 +82,10 @@ def turtle_loop():
     w.window.listen()
     turtle.mainloop()
 
-def user_control_loop():
-    #Backing up original attributes
-    orig_settings = termios.tcgetattr(sys.stdin)
-    #Setting up stdin in raw
-    tty.setraw(sys.stdin)
-    C = Controller()
-    C.create_temp_photo()
-    comm = 0
-    while comm != "x":
-        comm =  sys.stdin.read(1)[0]
-        if comm == "w": C.up()
-        elif comm == "s": C.down()
-        elif comm == "a": C.left()
-        elif comm == "d": C.right()
-        elif comm == "q": C.piv_left()
-        elif comm == "e": C.piv_right()
-    #Restoring original attributes of stdin
-    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
-
 def set_mode():
-    get_mode = raw_input("chose mode: 1 = user, 2 = user(w. turtle), 3 = AI ")
-    if get_mode == "1": user_control_loop()
-    if get_mode == "2": turtle_loop()
-    if get_mode == "3":
+    get_mode = raw_input("Choose mode: 1 , 2 = AI: ")
+    if get_mode == "1": turtle_loop()
+    if get_mode == "2":
         print ("AI mode isn't written yet!")
         set_mode()
 
