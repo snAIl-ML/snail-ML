@@ -78,11 +78,11 @@ def turtle_loop():
     w.window.onkey(w.down, 'Down')
     w.window.onkey(w.right, 'Right')
     w.window.onkey(w.left, 'Left')
-    w.window.onkey(w.piv_right, '/')
-    w.window.onkey(w.piv_left, '.')
+    w.window.onkey(w.piv_right, 'l')
+    w.window.onkey(w.piv_left, 'k')
     w.window.onkey(w.exit_turtle, 'q')
     w.window.listen()
-    w.window.mainloop()
+    turtle.mainloop()
 
 def user_control_loop():
     #Backing up original attributes
@@ -100,12 +100,11 @@ def user_control_loop():
         elif comm == "d": C.right()
         elif comm == "q": C.piv_left()
         elif comm == "e": C.piv_right()
-
     #Restoring original attributes of stdin
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
 
 def set_mode():
-    get_mode = input("chose mode: 1 = user, 2 = user(w. turtle), 3 = AI ")
+    get_mode = raw_input("chose mode: 1 = user, 2 = user(w. turtle), 3 = AI ")
     if get_mode == "1": user_control_loop()
     if get_mode == "2": turtle_loop()
     if get_mode == "3":
