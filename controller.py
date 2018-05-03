@@ -9,64 +9,50 @@ class Controller(object):
 
     def __init__(self, car=car, cam=camera):
         self.cam = cam
-        self.photo_path = "replace me"
+        self.photo_path = "current_image/test_string"
         self.car = car
+
+    def get_photoname(self):
+        return self.photo_path.split("/")[-1]
 
     def create_temp_photo(self):
         img_data = self.cam.grab_image_data()
-        dir_path = self.cam.create_path("current_image")
-        self.cam.create_directory(dir_path)
+        dir_path = self.cam.create_return_path("current_image")
         self.photo_path = self.cam.save_photo(dir_path, img_data)
 
     def up(self):
-        photoname = self.photo_path.split("/")[-1]
-        new_path = self.cam.create_path("forward")
-        self.cam.create_directory(new_path)
-        self.cam.move_photo(self.photo_path, new_path + "/" + photoname)
+        new_path = self.cam.create_return_path("forward")
+        self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.forward(0.2)
         self.create_temp_photo()
 
     def down(self):
-        photoname = self.photo_path.split("/")[-1]
-        new_path = self.cam.create_path("reverse")
-        self.cam.create_directory(new_path)
-        self.cam.move_photo(self.photo_path, new_path + "/" + photoname)
+        new_path = self.cam.create_return_path("reverse")
+        self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.reverse(0.2)
         self.create_temp_photo()
 
     def right(self):
-        photoname = self.photo_path.split("/")[-1]
-        new_path = self.cam.create_path("turn_right")
-        self.cam.create_directory(new_path)
-        self.cam.create_directory(new_path)
-        self.cam.move_photo(self.photo_path, new_path + "/" + photoname)
+        new_path = self.cam.create_return_path("turn_right")
+        self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.turn_right(0.2)
         self.create_temp_photo()
 
     def left(self):
-        photoname = self.photo_path.split("/")[-1]
-        new_path = self.cam.create_path("turn_left")
-        self.cam.create_directory(new_path)
-        self.cam.create_directory(new_path)
-        self.cam.move_photo(self.photo_path, new_path + "/" + photoname)
+        new_path = self.cam.create_return_path("turn_left")
+        self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.turn_left(0.2)
         self.create_temp_photo()
 
     def piv_right(self):
-        photoname = self.photo_path.split("/")[-1]
-        new_path = self.cam.create_path("pivot_right")
-        self.cam.create_directory(new_path)
-        self.cam.create_directory(new_path)
-        self.cam.move_photo(self.photo_path, new_path + "/" + photoname)
+        new_path = self.cam.create_return_path("pivot_right")
+        self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.pivot_right(0.2)
         self.create_temp_photo()
 
     def piv_left(self):
-        photoname = self.photo_path.split("/")[-1]
-        new_path = self.cam.create_path("pivot_left")
-        self.cam.create_directory(new_path)
-        self.cam.create_directory(new_path)
-        self.cam.move_photo(self.photo_path, new_path + "/" + photoname)
+        new_path = self.cam.create_return_path("pivot_left")
+        self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.pivot_left(0.2)
         self.create_temp_photo()
 

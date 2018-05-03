@@ -9,13 +9,16 @@ def grab_image_data(vision = cv2):
     del(cam)
     return image[1]
 
-def create_path(action):
-    print(os.path.dirname)
+def create_return_path(action):
+    return create_directory(get_path(action))
+
+def get_path(action):
     return os.path.join('images', action)
 
 def create_directory(dir_path):
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
+    return dir_path
 
 def save_photo(dir_path, image_data, vision=cv2):
     image_name_and_path = (dir_path + '/' +

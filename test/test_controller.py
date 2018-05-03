@@ -36,7 +36,7 @@ def test_up_to_call_forward_and_store_photo(mocker):
     controller = Controller(cam=mock_cam)
     controller.up()
     assert car.forward.called
-    assert mock_cam.paths == ["replace me", "forward"]
+    assert mock_cam.paths == ["current_image/test_string", "forward/test_string"]
 
 def test_down_to_call_reverse_and_store_photo(mocker):
     mocker.patch.object(car, 'reverse')
@@ -44,7 +44,7 @@ def test_down_to_call_reverse_and_store_photo(mocker):
     controller = Controller(cam=mock_cam)
     controller.down()
     assert car.reverse.called
-    assert mock_cam.paths == ["replace me", "reverse"]
+    assert mock_cam.paths == ["current_image/test_string", "reverse/test_string"]
 
 def test_right_to_call_turn_right_and_store_photo(mocker):
     mocker.patch.object(car, 'turn_right')
@@ -52,7 +52,7 @@ def test_right_to_call_turn_right_and_store_photo(mocker):
     controller = Controller(cam=mock_cam)
     controller.right()
     assert car.turn_right.called
-    assert mock_cam.paths == ["replace me", "turn_right"]
+    assert mock_cam.paths == ["current_image/test_string", "turn_right/test_string"]
 
 def test_left_to_call_turn_left_and_store_photo(mocker):
     mocker.patch.object(car, 'turn_left')
@@ -60,7 +60,7 @@ def test_left_to_call_turn_left_and_store_photo(mocker):
     controller = Controller(cam=mock_cam)
     controller.left()
     assert car.turn_left.called
-    assert mock_cam.paths == ["replace me", "turn_left"]
+    assert mock_cam.paths == ["current_image/test_string", "turn_left/test_string"]
 
 def test_piv_right_to_call_pivot_right_and_store_photo(mocker):
     mocker.patch.object(car, 'pivot_right')
@@ -68,7 +68,7 @@ def test_piv_right_to_call_pivot_right_and_store_photo(mocker):
     controller = Controller(cam=mock_cam)
     controller.piv_right()
     assert car.pivot_right.called
-    assert mock_cam.paths == ["replace me", "pivot_right"]
+    assert mock_cam.paths == ["current_image/test_string", "pivot_right/test_string"]
 
 def test_piv_left_to_call_pivot_left_and_store_photo(mocker):
     mocker.patch.object(car, 'pivot_left')
@@ -76,4 +76,4 @@ def test_piv_left_to_call_pivot_left_and_store_photo(mocker):
     controller = Controller(cam=mock_cam)
     controller.piv_left()
     assert car.pivot_left.called
-    assert mock_cam.paths == ["replace me", "pivot_left"]
+    assert mock_cam.paths == ["current_image/test_string", "pivot_left/test_string"]

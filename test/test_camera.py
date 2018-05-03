@@ -35,13 +35,18 @@ class mock_image_handler(object):
 def test_create_directory_creates_image_directory_if_doesnt_exist(mocker):
     mocker.patch.object(os, 'makedirs')
     camera.create_directory('test directory')
-    os.makedirs.assert_called
+    assert os.makedirs.called
 
 def test_grab_image_data():
     assert(camera.grab_image_data(mock_image_handler)) == 'image'
 
-def test_create_path():
-    assert(camera.create_path('forward')) ==  'images/forward'
+def test_get_path_returns_a_path():
+    assert(camera.get_path('forward')) ==  'images/forward'
+
+def test_create_return_path_returns_path_and_creates_image_directory_if_doesnt_exist(mocker):
+    mocker.patch.object(os, 'makedirs')
+    assert(camera.create_return_path('forward')) ==  'images/forward'
+    assert os.makedirs.called
 
 def test_save_photo(mocker):
     mocker.patch.object(mock_image_handler, 'imwrite')
@@ -60,4 +65,4 @@ def test_save_photo_returns_the_save_path(mock_time):
 def test_move_photo(mocker):
     mocker.patch.object(os, 'rename')
     camera.move_photo('this', 'that')
-    os.rename.assert_called
+    assert os.rename.called
