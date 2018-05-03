@@ -18,6 +18,7 @@ class Controller(object):
     def create_temp_photo(self):
         img_data = self.cam.grab_image_data()
         dir_path = self.cam.create_return_path("current_image")
+        self.clear_current_image_folder()
         self.photo_path = self.cam.save_photo(dir_path, img_data)
 
     def up(self):
@@ -64,6 +65,10 @@ class Controller(object):
 
     def exit_turtle(self):
         self.window.bye()
+
+    def clear_current_image_folder(self):
+        self.cam.delete_current_photo()
+
 
 def turtle_loop():
     w = Controller()

@@ -2,7 +2,7 @@ import os
 import random
 import path_helper
 
-from retrain_interface import get_retrain_command, run_bash_command, get_classify_command
+from retrain_interface import get_retrain_command, run_bash_command
 
 def test_get_retrain_command_generates_command_string_properly():
     images_path = "test_dir"
@@ -27,16 +27,3 @@ def test_run_bash_command_runs_command():
     run_bash_command("touch " + filename)
     assert (filename in os.listdir('.')) == True
     run_bash_command("rm " + filename)
-
-def test_get_classify_command_generates_command_string_properly():
-    model_path = "./model"
-    model_name = "model_name"
-    img_path = "image_path"
-    command_string = get_classify_command(model_path, model_name, img_path)
-    expected_return = ("python label_image.py \\" +
-        "--graph  ./model/model_name.pb \\" +
-        "--labels ./model/model_name_labels.txt \\" +
-        "--input_layer Placeholder \\" +
-        "--output_layer final_result \\" +
-        "--image image_path")
-    assert(command_string) == expected_return

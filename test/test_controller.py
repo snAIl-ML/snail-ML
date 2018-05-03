@@ -9,6 +9,7 @@ class mock_camera(object):
 
     def __init__(self):
         self.paths = []
+        self.test_string = "test"
 
     def grab_image_data(self):
         pass
@@ -27,6 +28,9 @@ class mock_camera(object):
 
     def create_return_path(self, path):
         return path
+
+    def delete_current_photo(self):
+        self.test_string = "deleted"
 
 def test_create_temp_photo_to_call_save_photo_and_store_path(mocker):
     controller = Controller(cam=mock_camera())
@@ -80,3 +84,9 @@ def test_piv_left_to_call_pivot_left_and_store_photo(mocker):
     controller.piv_left()
     assert car.pivot_left.called
     assert mock_cam.paths == ["current_image/test_string", "pivot_left/test_string"]
+
+def test_clear_current_image_folder_calls_camera_delete_current_photo():
+    mock_cam = mock_camera()
+    controller = Controller(cam=mock_cam)
+    controller.clear_current_image_folder()
+    assert mock_cam.test_string == "deleted"
