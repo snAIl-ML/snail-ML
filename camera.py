@@ -22,7 +22,7 @@ def create_directory(dir_path):
 
 def save_photo(dir_path, image_data, vision=cv2):
     image_name_and_path = (dir_path + '/' +
-        time.strftime('%Y-%m-%d %H-%M-%S', time.localtime()) + '.png')
+        time.strftime('%Y-%m-%d %H-%M-%S', time.localtime()) + '.jpg')
     vision.imwrite(image_name_and_path, image_data)
     return image_name_and_path
 

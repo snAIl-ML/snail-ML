@@ -58,7 +58,7 @@ def test_save_photo_returns_the_save_path(mock_time):
     timestring = time.strftime('%Y-%m-%d %H-%M-%S', faketimenow)
     assert(
         camera.save_photo('dir_path', 'image_data', mock_image_handler)
-    ) == "dir_path/" + timestring + ".png"
+    ) == "dir_path/" + timestring + ".jpg"
 
 def test_move_photo(mocker):
     mocker.patch.object(os, 'rename')
