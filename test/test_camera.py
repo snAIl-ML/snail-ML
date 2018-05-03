@@ -20,7 +20,6 @@ class mock_camera(object):
     def release(self):
         return True
 
-
 class mock_image_handler(object):
 
     def VideoCapture(self):
@@ -45,8 +44,8 @@ def test_get_path_returns_a_path():
 
 def test_create_return_path_returns_path_and_creates_image_directory_if_doesnt_exist(mocker):
     mocker.patch.object(os, 'makedirs')
-    assert(camera.create_return_path('forward')) ==  'images/forward'
-    assert os.makedirs.called
+    assert(camera.create_return_path('path')) ==  "images/path"
+
 
 def test_save_photo(mocker):
     mocker.patch.object(mock_image_handler, 'imwrite')
@@ -61,8 +60,18 @@ def test_save_photo_returns_the_save_path(mock_time):
         camera.save_photo('dir_path', 'image_data', mock_image_handler)
     ) == "dir_path/" + timestring + ".png"
 
-
 def test_move_photo(mocker):
     mocker.patch.object(os, 'rename')
     camera.move_photo('this', 'that')
     assert os.rename.called
+
+def test_delete_current_photo_deletes_all_files_in_dir():
+    os.makedirs("testing_remove")
+    os.chdir("./testing_remove")
+    text_file = open("test_file.txt", "w")
+    text_file.write("test_string")
+    text_file.close()
+    camera.delete_current_photo(".")
+    assert 'test_file' not in os.listdir(".")
+    os.chdir("..")
+    os.rmdir("testing_remove")
