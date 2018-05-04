@@ -1,3 +1,4 @@
+import path_helper_test_main
 from controller import Controller
 import mock
 import pytest

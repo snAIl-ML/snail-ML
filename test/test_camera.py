@@ -1,4 +1,4 @@
-import context
+import path_helper_test_main
 import pytest
 from unittest.mock import patch
 from pytest_mock import mocker

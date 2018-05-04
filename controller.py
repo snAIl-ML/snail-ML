@@ -66,28 +66,3 @@ class Controller(object):
 
     def clear_current_image_folder(self):
         self.cam.delete_current_photo()
-
-
-def turtle_loop():
-    w = Controller()
-    w.create_temp_photo()
-    w.start_turtle()
-    w.window.onkey(w.up, 'Up')
-    w.window.onkey(w.down, 'Down')
-    w.window.onkey(w.right, 'Right')
-    w.window.onkey(w.left, 'Left')
-    w.window.onkey(w.piv_right, 'l')
-    w.window.onkey(w.piv_left, 'k')
-    w.window.onkey(w.exit_turtle, 'q')
-    w.window.listen()
-    turtle.mainloop()
-
-def set_mode():
-    get_mode = raw_input("Choose mode: 1 , 2 = AI: ")
-    if get_mode == "1": turtle_loop()
-    if get_mode == "2":
-        print ("AI mode isn't written yet!")
-        set_mode()
-
-if __name__ == "__main__":
-   set_mode()

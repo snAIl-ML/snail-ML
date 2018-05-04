@@ -1,12 +1,5 @@
 [
-  "ml/test/test_retrain_interface.py::test_get_retrain_command_generates_command_string_properly",
-  "ml/test/test_retrain_interface.py::test_run_bash_command_runs_command",
-  "test/test_camera.py::test_create_directory_creates_image_directory_if_doesnt_exist",
-  "test/test_camera.py::test_grab_image_data",
-  "test/test_camera.py::test_get_path_returns_a_path",
-  "test/test_camera.py::test_create_return_path_returns_path_and_creates_image_directory_if_doesnt_exist",
-  "test/test_camera.py::test_save_photo",
-  "test/test_camera.py::test_save_photo_returns_the_save_path",
-  "test/test_camera.py::test_move_photo",
-  "test/test_camera.py::test_delete_current_photo_deletes_all_files_in_dir"
+  "test/test_snail.py::test_AI_loop_calls_create_temp_photo",
+  "test/test_snail.py::test_AI_loop_calls_AI_function",
+  "test/test_snail.py::test_AI_loop_calls_user_supervision_func_after_counter_reaches_target"
 ]

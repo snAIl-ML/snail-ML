@@ -1,6 +1,6 @@
 import os
 import random
-import path_helper
+import path_helper_test_ml
 
 from retrain_interface import get_retrain_command, run_bash_command
 
