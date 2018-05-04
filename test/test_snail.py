@@ -16,7 +16,7 @@ def mock_AI_func(mock_model_path = 'mock_model_path', mock_name = 'mock_name', m
     return [['forward', 0.99], [], []]
 
 def mock_user_supervisor_func():
-    pass
+    return "I am being called"
 
 # tests
 def test_AI_loop_calls_create_temp_photo(mocker):
@@ -32,4 +32,6 @@ def test_AI_loop_calls_AI_function_and_applies_motion(mocker):
     assert mock_Controller.up.called
 
 def test_AI_loop_calls_user_supervision_func_after_counter_reaches_target():
-    pass
+    assert(
+        AI_loop(counter=1, ai=mock_AI_func, user=mock_user_supervisor_func, control=mock_Controller)
+    ) == "I am being called"
