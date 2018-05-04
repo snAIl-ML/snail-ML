@@ -2,6 +2,9 @@ import path_helper_main_ml
 from label_image_no_cli import classify_image
 from controller import Controller
 import os
+from get_move_from_server import get_server_move
+
+URL = "WHERE"
 
 def user_loop(control=Controller):
     w = control()
@@ -24,11 +27,11 @@ def user_supervision():
 def get_img_path():
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
 
-def AI_loop(counter=5, ai=classify_image, user=user_supervision, img_path=get_img_path, control=Controller):
+def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_img_path, control=Controller):
     con = control()
     con.create_temp_photo()
     while counter>0:
-        move = ai('ml/Day4InitialModel', 'Day4InitialModel', img_path())[0][0]
+        move = ai(URL, img_path())[0][0]
         if move == 'forward': con.up()
         elif move == 'pivot right': con.piv_right()
         else: con.piv_left()
