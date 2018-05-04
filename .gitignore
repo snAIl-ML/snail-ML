@@ -9,3 +9,5 @@ ml/catdog_model
 /RPI
 /test/__pycache__
 /ml/test/__pycache__
+/ml/__pycache__
+/RPi

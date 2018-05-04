@@ -2,8 +2,8 @@ import path_helper_main_ml
 from label_image_no_cli import classify_image
 from controller import Controller
 
-def user_loop():
-    w = Controller()
+def user_loop(control=Controller):
+    w = control()
     w.create_temp_photo()
     w.start_turtle()
     w.window.onkey(w.up, 'Up')
@@ -19,9 +19,18 @@ def user_loop():
 def user_supervision():
     pass
 
-def AI_loop(counter=5, ai=classify_image, user=user_supervision):
-    con = Controller()
+def get_img_path():
+    pass
+
+def AI_loop(counter=5, ai=classify_image, user=user_supervision, img_path=get_img_path, control=Controller):
+    con = control()
     con.create_temp_photo()
+    while counter>0:
+        move = ai('./ml/Day4InitialModel', 'Day4InitialModel', img_path())[0][0]
+        if move == 'forward': con.up()
+        elif move == 'pivot right': con.piv_right()
+        else: con.piv_left()
+        counter -= 1
 
 def set_mode():
     get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")
