@@ -3,3 +3,11 @@ ml/flower_photos
 ml/retrained_model
 ml/cats_and_dogs
 ml/catdog_model
+.pytest_cache
+.pyc
+/__pycache__
+/RPI
+/test/__pycache__
+/ml/test/__pycache__
+/ml/__pycache__
+/RPi
