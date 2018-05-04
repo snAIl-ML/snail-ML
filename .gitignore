@@ -7,3 +7,5 @@ ml/catdog_model
 .pyc
 /__pycache__
 /RPI
+/test/__pycache__
+/ml/test/__pycache__
