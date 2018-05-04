@@ -4,8 +4,9 @@ import os
 
 def grab_image_data(vision = cv2):
     cam = vision.VideoCapture(0)
-    time.sleep(0.1)
-    image = cam.read()
+    image = ''
+    for i in range(0,2):
+        image = cam.read()
     del(cam)
     return image[1]
 
