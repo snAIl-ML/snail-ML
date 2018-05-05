@@ -2,12 +2,10 @@ import time
 import cv2
 import os
 
-def grab_image_data(vision = cv2):
-    cam = vision.VideoCapture(0)
+def grab_image_data(cam_object):
     image = ''
     for i in range(0,2):
-        image = cam.read()
-    del(cam)
+        image = cam_object.read()
     return image[1]
 
 def create_return_path(action):
