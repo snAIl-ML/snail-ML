@@ -3,7 +3,7 @@ import path_helper_main_ml
 from controller import Controller
 import os
 from get_move_from_server import get_server_move
-
+import turtle
 URL = "WHERE"
 
 def user_loop(control=Controller):
