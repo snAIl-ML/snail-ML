@@ -22,12 +22,6 @@ class mock_camera(object):
 
 class mock_image_handler(object):
 
-    def VideoCapture(self):
-        return mock_camera()
-
-    def read_from_camera(self, cam):
-        return [True, 'image']
-
     def imwrite(image_name, image_data):
         return True
 
