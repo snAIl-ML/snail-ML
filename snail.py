@@ -1,4 +1,3 @@
-import path_helper_main_ml
 # from label_image_no_cli import classify_image
 from controller import Controller
 import os
