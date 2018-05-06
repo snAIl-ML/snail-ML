@@ -2,7 +2,7 @@ from controller import Controller
 import os
 from get_move_from_server import get_server_move
 import turtle
-URL = "https://snail-ml.herokuapp.com"
+URL = "https://snail-ml.herokuapp.com/upload"
 
 def user_loop(control=Controller):
     w = control()
