@@ -1,9 +1,8 @@
-# from label_image_no_cli import classify_image
 from controller import Controller
 import os
 from get_move_from_server import get_server_move
 import turtle
-URL = "https://snailapi.herokuapp.com/upload"
+URL = "https://snail-ml.herokuapp.com"
 
 def user_loop(control=Controller):
     w = control()
@@ -42,7 +41,7 @@ def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_i
     return user()
 
 def set_mode():
-    get_mode = input("Choose mode: 1 = User, 2 = AI: ")
+    get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")
     if get_mode == "1": user_loop()
     elif get_mode == "2": AI_loop()
 
