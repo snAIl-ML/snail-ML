@@ -9,8 +9,8 @@ class Controller(object):
 
     def __init__(self, car=car, cam=camera, vision = cv2):
         self.cam_object = vision.VideoCapture(0)
-        self.cam_object.set(3,640)
-        self.cam_object(4,480)
+        self.cam_object.set(3, 320)
+        self.cam_object.set(4, 240)
         self.cam = cam
         self.photo_path = "current_image/test_string"
         self.car = car
