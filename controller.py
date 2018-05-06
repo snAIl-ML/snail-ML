@@ -1,8 +1,6 @@
-import sys
-import car as car
+import car
 import camera
 import turtle
-import time # to see processing time
 import cv2
 
 class Controller(object):
@@ -19,20 +17,15 @@ class Controller(object):
         return self.photo_path.split("/")[-1]
 
     def create_temp_photo(self):
-        start_time = time.time()
         img_data = self.cam.grab_image_data(self.cam_object)
         dir_path = self.cam.create_return_path("current_image")
         self.photo_path = self.cam.save_photo(dir_path, img_data)
-        print ("create temp photo took: ", time.time() - start_time, "seconds")
-
 
     def up(self):
-        start_time = time.time()
         new_path = self.cam.create_return_path("forward")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.forward(0.2)
         self.create_temp_photo()
-        print ("A move inc moving photo and creating photo took: ", time.time() - start_time, "seconds")
 
     def down(self):
         new_path = self.cam.create_return_path("reverse")
