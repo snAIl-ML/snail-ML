@@ -2,11 +2,10 @@ import time
 import cv2
 import os
 
-def grab_image_data(vision = cv2):
-    cam = vision.VideoCapture(0)
-    time.sleep(0.1)
-    image = cam.read()
-    del(cam)
+def grab_image_data(cam_object):
+    image = ''
+    for i in range(0,2):
+        image = cam_object.read()
     return image[1]
 
 def create_return_path(action):
@@ -22,7 +21,7 @@ def create_directory(dir_path):
 
 def save_photo(dir_path, image_data, vision=cv2):
     image_name_and_path = (dir_path + '/' +
-        time.strftime('%Y-%m-%d %H-%M-%S', time.localtime()) + '.jpg')
+        time.strftime('%Y-%m-%d-%H-%M-%S', time.localtime()) + '.jpg')
     vision.imwrite(image_name_and_path, image_data)
     return image_name_and_path
 

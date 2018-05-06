@@ -2,10 +2,15 @@ import sys
 import car as car
 import camera
 import turtle
+import time # to see processing time
+import cv2
 
 class Controller(object):
 
-    def __init__(self, car=car, cam=camera):
+    def __init__(self, car=car, cam=camera, vision = cv2):
+        self.cam_object = vision.VideoCapture(0)
+        self.cam_object.set(3, 320)
+        self.cam_object.set(4, 240)
         self.cam = cam
         self.photo_path = "current_image/test_string"
         self.car = car
@@ -14,16 +19,20 @@ class Controller(object):
         return self.photo_path.split("/")[-1]
 
     def create_temp_photo(self):
-        img_data = self.cam.grab_image_data()
+        start_time = time.time()
+        img_data = self.cam.grab_image_data(self.cam_object)
         dir_path = self.cam.create_return_path("current_image")
-        self.clear_current_image_folder()
         self.photo_path = self.cam.save_photo(dir_path, img_data)
+        print ("create temp photo took: ", time.time() - start_time, "seconds")
+
 
     def up(self):
+        start_time = time.time()
         new_path = self.cam.create_return_path("forward")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.forward(0.2)
         self.create_temp_photo()
+        print ("A move inc moving photo and creating photo took: ", time.time() - start_time, "seconds")
 
     def down(self):
         new_path = self.cam.create_return_path("reverse")
@@ -62,6 +71,8 @@ class Controller(object):
         self.window.bgcolor('blue')
 
     def exit_turtle(self):
+        del(self.cam_object)
+        self.clear_current_image_folder()
         self.window.bye()
 
     def clear_current_image_folder(self):

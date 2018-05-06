@@ -11,7 +11,7 @@ faketimenow = time.localtime(time.mktime((2018, 1, 1, 0, 3, 0, 0, 1, 0)))
 
 class mock_camera(object):
 
-    def read(self):
+    def read():
         return [True, 'image']
 
     def release_camera(self, cam):
@@ -22,12 +22,6 @@ class mock_camera(object):
 
 class mock_image_handler(object):
 
-    def VideoCapture(self):
-        return mock_camera()
-
-    def read_from_camera(self, cam):
-        return [True, 'image']
-
     def imwrite(image_name, image_data):
         return True
 
@@ -37,7 +31,7 @@ def test_create_directory_creates_image_directory_if_doesnt_exist(mocker):
     assert os.makedirs.called
 
 def test_grab_image_data():
-    assert(camera.grab_image_data(mock_image_handler)) == 'image'
+    assert(camera.grab_image_data(mock_camera)) == 'image'
 
 def test_get_path_returns_a_path():
     assert(camera.get_path('forward')) ==  'images/forward'
@@ -55,7 +49,7 @@ def test_save_photo(mocker):
 @patch('time.localtime')
 def test_save_photo_returns_the_save_path(mock_time):
     mock_time.return_value = faketimenow
-    timestring = time.strftime('%Y-%m-%d %H-%M-%S', faketimenow)
+    timestring = time.strftime('%Y-%m-%d-%H-%M-%S', faketimenow)
     assert(
         camera.save_photo('dir_path', 'image_data', mock_image_handler)
     ) == "dir_path/" + timestring + ".jpg"
