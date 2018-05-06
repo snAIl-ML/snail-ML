@@ -21,7 +21,7 @@ class mock_camera(object):
         return True
 
 class mock_image_handler(object):
-
+        
     def imwrite(image_name, image_data):
         return True
 

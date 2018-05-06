@@ -1,6 +1,9 @@
 import RPi.GPIO as GPIO
 import time
 
+INVERSE_SPEED_OF_SOUND_CM_X_TWO = 0.000058
+INVERSE_SPEED_OF_SOUND_INCH_X_TWO = 0.000148
+
 def init(echo, trigger):
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
@@ -26,17 +29,16 @@ def distance(echo, trigger, measure_unit = 'cm'):
         print('in first echo')
         no_signal = time.time()
 
-
     while GPIO.input(echo) == echo:
         print('in second echo')
         signal = time.time()
 
-    tl = signal - no_signal
+    time_lag = signal - no_signal
 
     if measure_unit == "cm":
-        distance = tl / 0.000058
+        distance = time_lag / INVERSE_SPEED_OF_SOUND_CM_X_TWO
     elif measure_unit == "in":
-        distance = tl / 0.000148
+        distance = time_lag / INVERSE_SPEED_OF_SOUND_INCH_X_TWO
     else:
         print('improper choice of measurement: in or cm')
         distance = None

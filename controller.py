@@ -7,10 +7,16 @@ import cv2
 
 class Controller(object):
 
+    PHOTO_WIDTH = 320
+    PHOTO_HEIGHT = 240
+    TIME_FRAME = 0.2
+    USER_CONTROLLER_WIDTH = 400
+    USER_CONTROLLER_HEIGHT = 500
+
     def __init__(self, car=car, cam=camera, vision = cv2):
         self.cam_object = vision.VideoCapture(0)
-        self.cam_object.set(3, 320)
-        self.cam_object.set(4, 240)
+        self.cam_object.set(3, self.PHOTO_WIDTH)
+        self.cam_object.set(4, self.PHOTO_HEIGHT)
         self.cam = cam
         self.photo_path = "current_image/test_string"
         self.car = car
@@ -30,42 +36,42 @@ class Controller(object):
         start_time = time.time()
         new_path = self.cam.create_return_path("forward")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.forward(0.2)
+        self.car.forward(self.TIME_FRAME)
         self.create_temp_photo()
         print ("A move inc moving photo and creating photo took: ", time.time() - start_time, "seconds")
 
     def down(self):
         new_path = self.cam.create_return_path("reverse")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.reverse(0.2)
+        self.car.reverse(self.TIME_FRAME)
         self.create_temp_photo()
 
     def right(self):
         new_path = self.cam.create_return_path("turn_right")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.turn_right(0.2)
+        self.car.turn_right(self.TIME_FRAME)
         self.create_temp_photo()
 
     def left(self):
         new_path = self.cam.create_return_path("turn_left")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.turn_left(0.2)
+        self.car.turn_left(self.TIME_FRAME)
         self.create_temp_photo()
 
     def piv_right(self):
         new_path = self.cam.create_return_path("pivot_right")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.pivot_right(0.2)
+        self.car.pivot_right(self.TIME_FRAME)
         self.create_temp_photo()
 
     def piv_left(self):
         new_path = self.cam.create_return_path("pivot_left")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.pivot_left(0.2)
+        self.car.pivot_left(self.TIME_FRAME)
         self.create_temp_photo()
 
     def start_turtle(self):
-        turtle.setup(400,500)
+        turtle.setup(self.USER_CONTROLLER_WIDTH, self.USER_CONTROLLER_HEIGHT)
         self.window = turtle.Screen()
         self.window.title('snAIl Controller')
         self.window.bgcolor('#e8e8e8')
