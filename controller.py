@@ -68,7 +68,8 @@ class Controller(object):
         turtle.setup(400,500)
         self.window = turtle.Screen()
         self.window.title('snAIl Controller')
-        self.window.bgcolor('blue')
+        self.window.bgcolor('#e8e8e8')
+        self.window.bgpic('./logo/logo.gif')
 
     def exit_turtle(self):
         del(self.cam_object)
