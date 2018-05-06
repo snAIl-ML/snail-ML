@@ -1,4 +1,3 @@
-import sys
 import car as car
 import camera
 import turtle
