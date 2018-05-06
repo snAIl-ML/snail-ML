@@ -23,7 +23,7 @@ class mock_Controller(object):
 
 # mock functions
 def mock_AI_func(mock_model_path = 'mock_model_path', mock_name = 'mock_name', mock_img_path= 'mock_img_path'):
-    return [['forward', 0.99], [], []]
+    return 'forward'
 
 def mock_user_supervisor_func():
     return "I am being called"
