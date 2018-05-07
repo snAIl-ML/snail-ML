@@ -21,14 +21,12 @@ def user_loop(control=Controller):
 def user_supervision():
     get_mode = input("Continue AI driving? 1 = Yes, 2 = No:  ")
     if get_mode == "1": AI_loop()
-    # else: w.exit_turtle() ####### needs calling to clear folder
-
 
 def get_img_path():
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
 
 def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_img_path, control=Controller):
-    con = control()
+    con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
     con.create_temp_photo()
     while counter>0:
         move = ai(img_path(), URL)
@@ -37,7 +35,8 @@ def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_i
         elif move == 'pivot right': con.piv_right()
         else: con.piv_left()
         counter -= 1
-    return user()
+    con.clear_current_image_folder()
+    user()
 
 def set_mode():
     get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")
