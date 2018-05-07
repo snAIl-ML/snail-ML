@@ -2,7 +2,7 @@ from controller import Controller
 import os
 from get_move_from_server import get_server_move
 import turtle
-URL = "https://snail-ml.herokuapp.com/upload"
+URL = "http://192.168.0.9:5000/upload"
 
 def user_loop(control=Controller):
     w = control()
@@ -31,13 +31,8 @@ def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_i
     con = control()
     con.create_temp_photo()
     while counter>0:
-<<<<<<< HEAD
-        move = ai(URL, img_path())
-=======
-
         move = ai(img_path(), URL)
         print("move ======== ", move)
->>>>>>> 45cdc9e662f0bb9b2ccb199c2397d23ca9779026
         if move == 'forward': con.up()
         elif move == 'pivot right': con.piv_right()
         else: con.piv_left()
