@@ -31,7 +31,7 @@ def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_i
     con = control()
     con.create_temp_photo()
     while counter>0:
-        move = ai(URL, img_path())[0][0]
+        move = ai(URL, img_path())
         if move == 'forward': con.up()
         elif move == 'pivot right': con.piv_right()
         else: con.piv_left()
