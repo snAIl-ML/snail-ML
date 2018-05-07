@@ -1,10 +1,8 @@
-import path_helper_main_ml
-from label_image_no_cli import classify_image
 from controller import Controller
 import os
 from get_move_from_server import get_server_move
-
-URL = "WHERE"
+import turtle
+URL = "https://snail-ml.herokuapp.com/upload"
 
 def user_loop(control=Controller):
     w = control()
@@ -23,6 +21,8 @@ def user_loop(control=Controller):
 def user_supervision():
     get_mode = input("Continue AI driving? 1 = Yes, 2 = No:  ")
     if get_mode == "1": AI_loop()
+    # else: w.exit_turtle() ####### needs calling to clear folder
+
 
 def get_img_path():
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
@@ -31,7 +31,13 @@ def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_i
     con = control()
     con.create_temp_photo()
     while counter>0:
+<<<<<<< HEAD
         move = ai(URL, img_path())
+=======
+
+        move = ai(img_path(), URL)
+        print("move ======== ", move)
+>>>>>>> 45cdc9e662f0bb9b2ccb199c2397d23ca9779026
         if move == 'forward': con.up()
         elif move == 'pivot right': con.piv_right()
         else: con.piv_left()
@@ -39,9 +45,9 @@ def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_i
     return user()
 
 def set_mode():
-    get_mode = input("Choose mode: 1 = User, 2 = AI: ")
+    get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")
     if get_mode == "1": user_loop()
-    if get_mode == "2": AI_loop()
+    elif get_mode == "2": AI_loop()
 
 if __name__ == "__main__":
    set_mode()

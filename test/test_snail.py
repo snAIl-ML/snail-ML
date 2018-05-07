@@ -11,9 +11,19 @@ class mock_Controller(object):
     def up(self):
         pass
 
+    def down(self):
+        pass
+
+    def piv_right(self):
+        pass
+
+    def piv_left(self):
+        pass
+
+
 # mock functions
 def mock_AI_func(mock_model_path = 'mock_model_path', mock_name = 'mock_name', mock_img_path= 'mock_img_path'):
-    return [['forward', 0.99], [], []]
+    return 'forward'
 
 def mock_user_supervisor_func():
     return "I am being called"
