@@ -53,7 +53,7 @@ def test_create_temp_photo_to_call_save_photo_and_store_path(mocker):
     controller = Controller(cam=mock_camera(), vision=mock_image_handler)
     controller.create_temp_photo()
     assert controller.photo_path == "a string"
-    
+
 def test_up_to_call_forward_and_store_photo(mocker):
     mocker.patch.object(car, 'forward')
     mock_cam = mock_camera()
@@ -102,8 +102,8 @@ def test_piv_left_to_call_pivot_left_and_store_photo(mocker):
     assert car.pivot_left.called
     assert mock_cam.paths == ["current_image/test_string", "pivot_left/test_string"]
 
-def test_clear_current_image_folder_calls_camera_delete_current_photo():
+def test_create_temp_photo_calls_camera_delete_current_photo():
     mock_cam = mock_camera()
     controller = Controller(cam=mock_cam, vision=mock_image_handler)
-    controller.clear_current_image_folder()
+    controller.create_temp_photo()
     assert mock_cam.test_string == "deleted"

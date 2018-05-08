@@ -35,8 +35,7 @@ def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_i
         elif move == 'pivot right': con.piv_right()
         else: con.piv_left()
         counter -= 1
-    con.clear_current_image_folder()
-    user()
+    return user()
 
 def set_mode():
     get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")

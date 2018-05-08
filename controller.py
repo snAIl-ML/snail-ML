@@ -73,5 +73,4 @@ class Controller(object):
 
     def exit_turtle(self):
         del(self.cam_object)
-        self.clear_current_image_folder()
         self.window.bye()

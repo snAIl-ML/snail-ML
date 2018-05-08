@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect
 from controller import Controller
 
 app = Flask(__name__, static_url_path='', static_folder='images/current_image')
@@ -13,17 +13,17 @@ def index():
 @app.route("/forward")
 def forward():
     controller.up()
-    return 'forward'
+    return redirect('/')
 
 @app.route("/piv_left")
 def piv_left():
     controller.piv_left()
-    return "piv_left"
+    return redirect('/')
 
 @app.route("/piv_right")
 def piv_right():
     controller.piv_right()
-    return "piv_right"
+    return redirect('/')
 
 if __name__ == "__main__":
     app.run()
