@@ -1,3 +1,4 @@
+'Module to ger response from the server'
 import os
 
 def get_server_move(image_path, url):
