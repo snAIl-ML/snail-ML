@@ -14,7 +14,12 @@
   "test/test_controller.py::test_left_to_call_turn_left_and_store_photo",
   "test/test_controller.py::test_piv_right_to_call_pivot_right_and_store_photo",
   "test/test_controller.py::test_piv_left_to_call_pivot_left_and_store_photo",
-  "test/test_controller.py::test_clear_current_image_folder_calls_camera_delete_current_photo",
+  "test/test_controller.py::test_create_temp_photo_calls_camera_delete_current_photo",
+  "test/test_remoteAPI.py::test_index_route_initializes_photo_loop_and_asks_for_photo_path",
+  "test/test_remoteAPI.py::test_FEATURE_index_route_captures_and_renders_photo_path",
+  "test/test_remoteAPI.py::test_forward_route_calls_up_function_and_redirects_to_index",
+  "test/test_remoteAPI.py::test_pivot_left_route_calls_pivot_left_function_and_redirects_to_index",
+  "test/test_remoteAPI.py::test_pivot_right_route_calls_pivot_right_function_and_redirects_to_index",
   "test/test_snail.py::test_AI_loop_calls_create_temp_photo",
   "test/test_snail.py::test_AI_loop_calls_AI_function_and_applies_motion",
   "test/test_snail.py::test_AI_loop_calls_user_supervision_func_after_counter_reaches_target"
