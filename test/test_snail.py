@@ -20,6 +20,9 @@ class mock_Controller(object):
     def piv_left(self):
         pass
 
+    def clear_current_image_folder(self):
+        pass
+
 
 # mock functions
 def mock_AI_func(mock_model_path = 'mock_model_path', mock_name = 'mock_name', mock_img_path= 'mock_img_path'):
@@ -27,6 +30,9 @@ def mock_AI_func(mock_model_path = 'mock_model_path', mock_name = 'mock_name', m
 
 def mock_user_supervisor_func():
     return "I am being called"
+
+def mock_image_path():
+    return 'an image path'
 
 # tests
 def test_AI_loop_calls_create_temp_photo(mocker):
@@ -43,5 +49,5 @@ def test_AI_loop_calls_AI_function_and_applies_motion(mocker):
 
 def test_AI_loop_calls_user_supervision_func_after_counter_reaches_target():
     assert(
-        AI_loop(counter=1, ai=mock_AI_func, user=mock_user_supervisor_func, control=mock_Controller)
+        AI_loop(counter=0, ai=mock_AI_func, user=mock_user_supervisor_func, img_path=mock_image_path, control=mock_Controller)
     ) == "I am being called"

@@ -15,6 +15,7 @@
   "test/test_controller.py::test_piv_right_to_call_pivot_right_and_store_photo",
   "test/test_controller.py::test_piv_left_to_call_pivot_left_and_store_photo",
   "test/test_controller.py::test_clear_current_image_folder_calls_camera_delete_current_photo",
+  "test/test_remoteAPI.py::test_index_page",
   "test/test_snail.py::test_AI_loop_calls_create_temp_photo",
   "test/test_snail.py::test_AI_loop_calls_AI_function_and_applies_motion",
   "test/test_snail.py::test_AI_loop_calls_user_supervision_func_after_counter_reaches_target"
