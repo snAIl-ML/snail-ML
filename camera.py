@@ -29,5 +29,6 @@ def move_photo(old_path, new_path):
     os.rename(old_path, new_path)
 
 def delete_current_photo(path="./images/current_image"):
-    for file in os.listdir(path):
-        os.remove(os.path.join(path, file))
+    if os.path.exists(path):
+        for file in os.listdir(path):
+            os.remove(os.path.join(path, file))
