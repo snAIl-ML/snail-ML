@@ -25,3 +25,11 @@ def test_pivot_left_route_calls_pivot_left_function(mocker):
     assert (response.status_code) == 200
     assert ('piv_left' in response.data.decode("utf8"))
     assert (controller.piv_left.called)
+
+def test_pivot_right_route_calls_pivot_right_function(mocker):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'piv_right')
+    response = tester.get('/piv_right', content_type='html/test')
+    assert (response.status_code) == 200
+    assert ('piv_right' in response.data.decode("utf8"))
+    assert (controller.piv_right.called)

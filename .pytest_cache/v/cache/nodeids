@@ -1,5 +1,6 @@
 [
   "test/test_remoteAPI.py::test_index_route_initializes_photo_loop",
   "test/test_remoteAPI.py::test_forward_route_calls_up_function",
-  "test/test_remoteAPI.py::test_pivot_left_route_calls_pivot_left_function"
+  "test/test_remoteAPI.py::test_pivot_left_route_calls_pivot_left_function",
+  "test/test_remoteAPI.py::test_pivot_right_route_calls_pivot_right_function"
 ]
