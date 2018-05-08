@@ -20,5 +20,10 @@ def piv_left():
     controller.piv_left()
     return "piv_left"
 
+@app.route("/piv_right")
+def piv_right():
+    controller.piv_right()
+    return "piv_right"
+
 if __name__ == "__main__":
     app.run()
