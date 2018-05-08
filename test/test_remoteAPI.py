@@ -15,3 +15,11 @@ def test_forward_route(mocker):
     assert (response.status_code) == 200
     assert ('forward' in response.data.decode("utf8"))
     assert (controller.up.called)
+
+def test_pivot_left_route(mocker):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'piv_left')
+    response = tester.get('/piv_left', content_type='html/test')
+    assert (response.status_code) == 200
+    assert ('piv_left' in response.data.decode("utf8"))
+    assert (controller.piv_left.called)
