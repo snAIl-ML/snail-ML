@@ -1,14 +1,14 @@
-from flask import Flask
+from flask import Flask, render_template, url_for
 from controller import Controller
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='images/current_image')
 
 controller = Controller()
 
 @app.route("/")
 def index():
     controller.create_temp_photo()
-    return 'snail remote control API'
+    return render_template ('index.html', image_path = controller.get_photoname())
 
 @app.route("/forward")
 def forward():

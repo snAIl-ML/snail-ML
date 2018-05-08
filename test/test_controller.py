@@ -53,8 +53,7 @@ def test_create_temp_photo_to_call_save_photo_and_store_path(mocker):
     controller = Controller(cam=mock_camera(), vision=mock_image_handler)
     controller.create_temp_photo()
     assert controller.photo_path == "a string"
-
-
+    
 def test_up_to_call_forward_and_store_photo(mocker):
     mocker.patch.object(car, 'forward')
     mock_cam = mock_camera()
