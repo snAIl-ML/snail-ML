@@ -1,11 +1,10 @@
 import os
 
-
 def get_server_move(image_path, url):
     #nb this is acknowledged as terrible, terrible code
     response_file = "response.txt"
     post_command = ("curl -o response.txt -F 'image=@" +
-    image_path + "' " + url)
+                    image_path + "' " + url)
     os.system(post_command)
     output = ""
     with open(response_file) as file:
