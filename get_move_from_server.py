@@ -1,5 +1,6 @@
 import os
 
+
 def get_server_move(image_path, url):
     #nb this is acknowledged as terrible, terrible code
     response_file = "response.txt"
