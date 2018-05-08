@@ -2,7 +2,7 @@ from controller import Controller
 import os
 from get_move_from_server import get_server_move
 import turtle
-URL = "http://192.168.0.10:5000/upload"
+URL = "http://192.168.48.244:5000/upload"
 
 def user_loop(control=Controller):
     w = control()
