@@ -12,5 +12,6 @@ def get_server_move(image_path, url):
     with open(response_file) as file:
         for line in file:
             output = output + line
-    with open(response_file, 'w'): pass
+    with open(response_file, 'w'):
+        pass
     return output
