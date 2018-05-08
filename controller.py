@@ -7,7 +7,8 @@ class Controller(object):
 
     PHOTO_WIDTH = 320
     PHOTO_HEIGHT = 240
-    TIME_FRAME = 0.2
+    FWD_TIME_FRAME = 0.2
+    PIV_TIME_FRAME = 0.1
     USER_CONTROLLER_WIDTH = 400
     USER_CONTROLLER_HEIGHT = 500
 
@@ -30,37 +31,37 @@ class Controller(object):
     def up(self):
         new_path = self.cam.create_return_path("forward")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.forward(self.TIME_FRAME)
+        self.car.forward(self.FWD_TIME_FRAME)
         self.create_temp_photo()
 
     def down(self):
         new_path = self.cam.create_return_path("reverse")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.reverse(self.TIME_FRAME)
+        self.car.reverse(self.FWD_TIME_FRAME)
         self.create_temp_photo()
 
     def right(self):
         new_path = self.cam.create_return_path("turn_right")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.turn_right(self.TIME_FRAME)
+        self.car.turn_right(self.FWD_TIME_FRAME)
         self.create_temp_photo()
 
     def left(self):
         new_path = self.cam.create_return_path("turn_left")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.turn_left(self.TIME_FRAME)
+        self.car.turn_left(self.FWD_TIME_FRAME)
         self.create_temp_photo()
 
     def piv_right(self):
         new_path = self.cam.create_return_path("pivot_right")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.pivot_right(self.TIME_FRAME)
+        self.car.pivot_right(self.PIV_TIME_FRAME)
         self.create_temp_photo()
 
     def piv_left(self):
         new_path = self.cam.create_return_path("pivot_left")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
-        self.car.pivot_left(self.TIME_FRAME)
+        self.car.pivot_left(self.PIV_TIME_FRAME)
         self.create_temp_photo()
 
     def start_turtle(self):

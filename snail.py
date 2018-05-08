@@ -2,7 +2,7 @@ from controller import Controller
 import os
 from get_move_from_server import get_server_move
 import turtle
-URL = "http://192.168.0.9:5000/upload"
+URL = "http://192.168.0.10:5000/upload"
 
 def user_loop(control=Controller):
     w = control()
@@ -10,22 +10,22 @@ def user_loop(control=Controller):
     w.start_turtle()
     w.window.onkey(w.up, 'Up')
     w.window.onkey(w.down, 'Down')
-    w.window.onkey(w.right, 'Right')
-    w.window.onkey(w.left, 'Left')
-    w.window.onkey(w.piv_right, 'l')
-    w.window.onkey(w.piv_left, 'k')
-    w.window.onkey(w.exit_turtle, 'q')
+    w.window.onkey(w.right, 'r')
+    w.window.onkey(w.left, 'l')
+    w.window.onkey(w.piv_right, 'Right')
+    w.window.onkey(w.piv_left, 'Left')
+    w.window.onkey(w.exit_turtle, 'x')
     w.window.listen()
     turtle.mainloop()
 
 def user_supervision():
-    get_mode = input("Continue AI driving? 1 = Yes, 2 = No:  ")
+    get_mode = raw_input("Continue AI driving? 1 = Yes, 2 = No:  ")
     if get_mode == "1": AI_loop()
 
 def get_img_path():
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
 
-def AI_loop(counter=5, ai=get_server_move, user=user_supervision, img_path=get_img_path, control=Controller):
+def AI_loop(counter=100, ai=get_server_move, user=user_supervision, img_path=get_img_path, control=Controller):
     con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
     con.create_temp_photo()
     while counter>0:
