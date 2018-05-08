@@ -1,3 +1,4 @@
 [
-  "test/test_remoteAPI.py::test_index_page"
+  "test/test_remoteAPI.py::test_index_route",
+  "test/test_remoteAPI.py::test_forward_route"
 ]
