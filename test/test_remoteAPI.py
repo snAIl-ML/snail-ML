@@ -2,7 +2,7 @@ import path_helper_test_main
 from remoteAPI import *
 
 
-def test_index_route_initializes_photo_loop_and_displays_a_photo(mocker):
+def test_index_route_initializes_photo_loop_and_asks_for_photo_path(mocker):
     tester = app.test_client()
     mocker.patch.object(controller, 'create_temp_photo')
     mocker.patch.object(controller, 'get_photoname')
@@ -10,6 +10,12 @@ def test_index_route_initializes_photo_loop_and_displays_a_photo(mocker):
     assert (response.status_code) == 200
     assert (controller.create_temp_photo.called)
     assert (controller.get_photoname.called)
+
+def test_FEATURE_index_route_captures_and_renders_photo_path(mocker):
+    tester = app.test_client()
+    response = tester.get('/', content_type='html/text')
+    assert (response.status_code) == 200
+    assert('img src=' in response.data.decode("utf8"))
 
 def test_forward_route_calls_up_function_and_redirects_to_index(mocker):
     tester = app.test_client()
