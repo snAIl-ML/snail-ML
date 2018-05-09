@@ -28,6 +28,7 @@ def piv_right():
 @app.route("/ai_mode")
 def ai_mode():
     controller.create_temp_photo()
+    controller.get_server_move("x","y")
     return redirect('/')
 
 

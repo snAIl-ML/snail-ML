@@ -3,6 +3,7 @@ import camera
 import turtle
 import cv2
 import os
+import requests
 
 class Controller(object):
 
