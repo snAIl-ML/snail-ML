@@ -35,7 +35,7 @@ def forward(time_frame):
     return True
 
 def pivot_left(time_frame):
-    print('Pivoting left')
+    print('PIVOTING LEFT')
     init()
     GPIO.output(6, False)
     GPIO.output(13, True)
@@ -46,7 +46,7 @@ def pivot_left(time_frame):
     return True
 
 def pivot_right(time_frame):
-    print('Pivoting right')
+    print('PIVOTING RIGHT')
     init()
     GPIO.output(6, True)
     GPIO.output(13, False)
