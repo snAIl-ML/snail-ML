@@ -2,6 +2,7 @@ import car
 import camera
 import turtle
 import cv2
+import os
 
 class Controller(object):
 
@@ -31,6 +32,8 @@ class Controller(object):
 
     def up(self):
         new_path = self.cam.create_return_path("forward")
+        print("forwards count = " +
+        str(len(os.listdir("./images/forward"))))
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.forward(self.FWD_TIME_FRAME)
         self.create_temp_photo()
@@ -55,12 +58,16 @@ class Controller(object):
 
     def piv_right(self):
         new_path = self.cam.create_return_path("pivot_right")
+        print("pivot right count = " +
+        str(len(os.listdir("./images/pivot_right"))))
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.pivot_right(self.PIV_TIME_FRAME)
         self.create_temp_photo()
 
     def piv_left(self):
         new_path = self.cam.create_return_path("pivot_left")
+        print("pivot left count = " +
+        str(len(os.listdir("./images/pivot_left"))))
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.pivot_left(self.PIV_TIME_FRAME)
         self.create_temp_photo()
