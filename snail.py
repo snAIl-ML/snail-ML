@@ -26,7 +26,7 @@ def user_supervision():
 def get_img_path():
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
 
-def set_server_url():
+def get_server_url():
     return raw_input("Enter AI server URL: ")
 
 def AI_loop(
