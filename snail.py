@@ -41,9 +41,14 @@ def AI_loop(
     while counter>0:
         move = ai(img_path(), URL)
         print("move ======== ", move)
-        if move == 'forward': con.up()
-        elif move == 'pivot right': con.piv_right()
+        if move == 'forward':
+            con.up()
+            print("forwards count = " + len(os.listdir("./images/forward")
+        elif move == 'pivot right':
+            con.piv_right()
+            print("pivot right count = " + len(os.listdir("./images/pivot_right")
         else: con.piv_left()
+            print("pivot left count = " + len(os.listdir("./images/pivot_left")
         counter -= 1
     return user()
 
