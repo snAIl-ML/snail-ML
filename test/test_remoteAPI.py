@@ -81,3 +81,21 @@ def test_ai_move_applies_forward_move(mocker, monkeypatch):
     mocker.patch.object(controller, 'up')
     response = tester.get('/ai_move?host_url=test', content_type='html/text')
     assert (controller.up.called)
+
+def test_ai_move_applies_pivot_left_move(mocker, monkeypatch):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'create_temp_photo')
+    mocker.patch.object(controller, 'get_img_path')
+    monkeypatch.setattr(controller,'get_server_move', lambda x, y: 'pivot left')
+    mocker.patch.object(controller, 'piv_left')
+    response = tester.get('/ai_move?host_url=test', content_type='html/text')
+    assert (controller.piv_left.called)
+
+def test_ai_move_applies_pivot_right_move(mocker, monkeypatch):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'create_temp_photo')
+    mocker.patch.object(controller, 'get_img_path')
+    monkeypatch.setattr(controller,'get_server_move', lambda x, y: 'pivot right')
+    mocker.patch.object(controller, 'piv_right')
+    response = tester.get('/ai_move?host_url=test', content_type='html/text')
+    assert (controller.piv_right.called)
