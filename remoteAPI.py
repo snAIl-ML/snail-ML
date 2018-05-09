@@ -30,7 +30,6 @@ def ai_move():
     "this route is expected to be called with the"
     "origins ML image upload URL as a query param"
     host_url = request.args['host_url']
-    controller.create_temp_photo()
     img_path = controller.get_img_path()
     move = controller.get_server_move(img_path, host_url)
     if move == 'forward': controller.up()

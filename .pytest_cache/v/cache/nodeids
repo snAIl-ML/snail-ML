@@ -20,7 +20,6 @@
   "test/test_remoteAPI.py::test_forward_route_calls_up_function_and_redirects_to_index",
   "test/test_remoteAPI.py::test_pivot_left_route_calls_pivot_left_function_and_redirects_to_index",
   "test/test_remoteAPI.py::test_pivot_right_route_calls_pivot_right_function_and_redirects_to_index",
-  "test/test_remoteAPI.py::test_ai_move_calls_create_temp_photo",
   "test/test_remoteAPI.py::test_ai_move_calls_get_image_path",
   "test/test_remoteAPI.py::test_ai_move_calls_get_server_move_with_passed_in_url_and_image_path",
   "test/test_remoteAPI.py::test_ai_move_applies_forward_move",
