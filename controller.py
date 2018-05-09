@@ -88,3 +88,6 @@ class Controller(object):
         'Function to get response from the server'
         server_move = requests.post(url, files={'image': open(image_path, 'rb')})
         return server_move.text
+
+    def get_img_path():
+        return "./images/current_image/" + os.listdir("./images/current_image")[0]

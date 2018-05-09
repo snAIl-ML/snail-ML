@@ -29,9 +29,9 @@ def piv_right():
 def ai_mode():
     "this route is expected to be called with the"
     "origins ML image upload URL as a param"
-    # host_url = request.args['host_url']
+    host_url = request.args['host_url']
     controller.create_temp_photo()
-    controller.get_server_move("x","y")
+    controller.get_server_move(host_url)
     return redirect('/')
 
 if __name__ == "__main__":

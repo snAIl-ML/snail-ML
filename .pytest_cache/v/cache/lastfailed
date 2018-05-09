@@ -6,6 +6,5 @@
   "test/test_controller.py::test_create_photo_to_call_save_photo": true,
   "test/test_controller.py::test_init_calls_cam_object_set_method": true,
   "test/test_controller.py::test_take_extra_photo_to_call_create_photo": true,
-  "test/test_remoteAPI.py::test_ai_mode_calls_get_server_move_with_passed_in_url": true,
   "tests/camera_test.py": true
 }
