@@ -40,7 +40,7 @@ def AI_loop(
     con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
     con.create_temp_photo()
     while counter>0:
-        move = ai(img_path(), URL)
+        move = ai(img_path(), server_url)
         print("move ======== ", move)
         if move == 'forward': con.up()
         elif move == 'pivot right': con.piv_right()
