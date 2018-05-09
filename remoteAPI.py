@@ -31,6 +31,7 @@ def ai_mode():
     "origins ML image upload URL as a param"
     host_url = request.args['host_url']
     controller.create_temp_photo()
+    controller.get_img_path()
     controller.get_server_move(host_url)
     return redirect('/')
 

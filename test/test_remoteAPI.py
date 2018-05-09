@@ -68,6 +68,7 @@ def test_ai_mode_calls_get_image_path(mocker):
 def test_ai_mode_calls_get_server_move_with_passed_in_url(mocker):
     tester = app.test_client()
     mocker.patch.object(controller, 'create_temp_photo')
+    mocker.patch.object(controller, 'get_img_path')
     mocker.patch.object(controller, 'get_server_move')
     response = tester.get('/ai_mode?host_url=test', content_type='html/text')
     controller.get_server_move.assert_called_with('test')
