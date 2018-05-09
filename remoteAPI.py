@@ -32,7 +32,10 @@ def ai_mode():
     host_url = request.args['host_url']
     controller.create_temp_photo()
     img_path = controller.get_img_path()
-    controller.get_server_move(img_path, host_url)
+    move = controller.get_server_move(img_path, host_url)
+    # if move == 'forward': controller.up()
+    # elif move == 'pivot right': controller.piv_right()
+    # else: controller.piv_left()
     return redirect('/')
 
 if __name__ == "__main__":
