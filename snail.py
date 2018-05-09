@@ -47,7 +47,8 @@ def AI_loop(
         elif move == 'pivot right':
             con.piv_right()
             print("pivot right count = " + len(os.listdir("./images/pivot_right")
-        else: con.piv_left()
+        else:
+            con.piv_left()
             print("pivot left count = " + len(os.listdir("./images/pivot_left")
         counter -= 1
     return user()
