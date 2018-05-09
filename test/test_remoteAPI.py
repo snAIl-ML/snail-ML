@@ -49,3 +49,10 @@ def test_pivot_right_route_calls_pivot_right_function_and_redirects_to_index(moc
     assert (controller.piv_right.called)
     assert (controller.create_temp_photo.called)
     assert (controller.get_photoname.called)
+
+def test_ai_mode_calls_create_temp_photo(mocker):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'create_temp_photo')
+    response = tester.get('/ai_mode', content_type='html/text', follow_redirects=True)
+    assert (response.status_code) == 200
+    assert (controller.create_temp_photo.called)
