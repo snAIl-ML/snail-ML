@@ -25,7 +25,7 @@ def piv_right():
     controller.piv_right()
     return redirect('/')
 
-@app.route("/ai_mode")
+@app.route("/ai_move")
 def ai_mode():
     "this route is expected to be called with the"
     "origins ML image upload URL as a query param"
