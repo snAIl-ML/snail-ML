@@ -22,7 +22,7 @@
   "test/test_remoteAPI.py::test_pivot_right_route_calls_pivot_right_function_and_redirects_to_index",
   "test/test_remoteAPI.py::test_ai_mode_calls_create_temp_photo",
   "test/test_remoteAPI.py::test_ai_mode_calls_get_image_path",
-  "test/test_remoteAPI.py::test_ai_mode_calls_get_server_move_with_passed_in_url",
+  "test/test_remoteAPI.py::test_ai_mode_calls_get_server_move_with_passed_in_url_and_image_path",
   "test/test_snail.py::test_AI_loop_calls_create_temp_photo",
   "test/test_snail.py::test_AI_loop_calls_AI_function_and_applies_motion",
   "test/test_snail.py::test_AI_loop_calls_user_supervision_func_after_counter_reaches_target"
