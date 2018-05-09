@@ -34,7 +34,7 @@ def AI_loop(
         ai=get_server_move,
         user=user_supervision,
         img_path=get_img_path,
-        control=Controller
+        control=Controller,
         server_url = get_server_url()
     ):
     con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
