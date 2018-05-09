@@ -56,3 +56,10 @@ def test_ai_mode_calls_create_temp_photo(mocker):
     response = tester.get('/ai_mode', content_type='html/text', follow_redirects=True)
     assert (response.status_code) == 200
     assert (controller.create_temp_photo.called)
+
+def test_ai_mode_calls_get_server_move(mocker):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'get_server_move')
+    response = tester.get('/ai_mode', content_type='html/text', follow_redirects=True)
+    assert (response.status_code) == 200
+    assert (controller.get_server_move.called)
