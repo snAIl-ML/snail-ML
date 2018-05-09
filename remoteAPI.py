@@ -26,7 +26,7 @@ def piv_right():
     return redirect('/')
 
 @app.route("/ai_move")
-def ai_mode():
+def ai_move():
     "this route is expected to be called with the"
     "origins ML image upload URL as a query param"
     host_url = request.args['host_url']
