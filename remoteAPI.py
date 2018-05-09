@@ -25,5 +25,11 @@ def piv_right():
     controller.piv_right()
     return redirect('/')
 
+@app.route("/ai_mode")
+def ai_mode():
+    controller.create_temp_photo()
+    return redirect('/')
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
