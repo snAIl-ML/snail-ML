@@ -54,13 +54,12 @@ def test_ai_mode_calls_create_temp_photo(mocker):
     tester = app.test_client()
     mocker.patch.object(controller, 'create_temp_photo')
     mocker.patch.object(controller, 'get_server_move')
-    response = tester.get('/ai_mode', content_type='html/text', follow_redirects=True)
-    assert (response.status_code) == 200
+    response = tester.get('/ai_mode?host_url=test', content_type='html/text')
     assert (controller.create_temp_photo.called)
 
-def test_ai_mode_calls_get_server_move(mocker):
+def test_ai_mode_calls_get_server_move_with_passed_in_url(mocker):
     tester = app.test_client()
+    mocker.patch.object(controller, 'create_temp_photo')
     mocker.patch.object(controller, 'get_server_move')
-    response = tester.get('/ai_mode', content_type='html/text', follow_redirects=True)
-    assert (response.status_code) == 200
-    assert (controller.get_server_move.called)
+    response = tester.get('/ai_mode?host_url=test', content_type='html/text')
+    controller.get_server_move.assert_called_with('test')

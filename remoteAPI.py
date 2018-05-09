@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, request
 from controller import Controller
 
 app = Flask(__name__, static_url_path='', static_folder='images/current_image')
@@ -27,10 +27,12 @@ def piv_right():
 
 @app.route("/ai_mode")
 def ai_mode():
+    "this route is expected to be called with the"
+    "origins ML image upload URL as a param"
+    # host_url = request.args['host_url']
     controller.create_temp_photo()
     controller.get_server_move("x","y")
     return redirect('/')
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
