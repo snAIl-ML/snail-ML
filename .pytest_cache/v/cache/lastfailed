@@ -4,7 +4,17 @@
   "test/test_camera.py::test_take_picture1": true,
   "test/test_controller.py::test_clear_current_image_folder_calls_camera_delete_current_photo": true,
   "test/test_controller.py::test_create_photo_to_call_save_photo": true,
+  "test/test_controller.py::test_create_temp_photo_calls_camera_delete_current_photo": true,
+  "test/test_controller.py::test_create_temp_photo_to_call_save_photo_and_store_path": true,
+  "test/test_controller.py::test_down_to_call_reverse_and_store_photo": true,
   "test/test_controller.py::test_init_calls_cam_object_set_method": true,
+  "test/test_controller.py::test_left_to_call_turn_left_and_store_photo": true,
+  "test/test_controller.py::test_piv_left_to_call_pivot_left_and_store_photo": true,
+  "test/test_controller.py::test_piv_right_to_call_pivot_right_and_store_photo": true,
+  "test/test_controller.py::test_right_to_call_turn_right_and_store_photo": true,
   "test/test_controller.py::test_take_extra_photo_to_call_create_photo": true,
+  "test/test_controller.py::test_up_to_call_forward_and_store_photo": true,
+  "test/test_remoteAPI.py": true,
+  "test/test_snail.py": true,
   "tests/camera_test.py": true
 }

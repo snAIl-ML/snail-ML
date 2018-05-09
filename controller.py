@@ -11,6 +11,7 @@ class Controller(object):
     PIV_TIME_FRAME = 0.1
     USER_CONTROLLER_WIDTH = 400
     USER_CONTROLLER_HEIGHT = 500
+    flag = False
 
     def __init__(self, car=car, cam=camera, vision = cv2):
         self.cam_object = vision.VideoCapture(0)
@@ -19,6 +20,7 @@ class Controller(object):
         self.cam = cam
         self.photo_path = "current_image/test_string"
         self.car = car
+        # self.flag = False
 
     def get_photoname(self):
         return self.photo_path.split("/")[-1]
