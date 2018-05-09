@@ -3,7 +3,7 @@ import os
 from get_move_from_server import get_server_move
 import turtle
 
-URL = "http://192.168.48.116:5000/upload"
+URL = "http://192.168.48.116:8000/upload"
 
 def user_loop(control=Controller):
     w = control()
@@ -26,12 +26,16 @@ def user_supervision():
 def get_img_path():
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
 
+def set_server_url():
+    return raw_input("Enter AI server URL: ")
+
 def AI_loop(
         counter=100,
         ai=get_server_move,
         user=user_supervision,
         img_path=get_img_path,
         control=Controller
+        server_url = get_server_url()
     ):
     con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
     con.create_temp_photo()
@@ -44,14 +48,10 @@ def AI_loop(
         counter -= 1
     return user()
 
-def set_server_url():
-    URL = raw_input("Enter AI server URL: ")
-
 def set_mode():
     get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")
     if get_mode == "1": user_loop()
     elif get_mode == "2":
-        set_server_url()
         AI_loop()
 
 if __name__ == "__main__":
