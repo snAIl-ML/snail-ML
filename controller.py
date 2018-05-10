@@ -1,3 +1,4 @@
+'Controller Module'
 import car
 import camera
 import turtle
@@ -5,6 +6,7 @@ import cv2
 import os
 
 class Controller(object):
+    'Controller Class'
 
     PHOTO_WIDTH = 320
     PHOTO_HEIGHT = 240
@@ -13,7 +15,8 @@ class Controller(object):
     USER_CONTROLLER_WIDTH = 400
     USER_CONTROLLER_HEIGHT = 500
 
-    def __init__(self, car=car, cam=camera, vision = cv2):
+    def __init__(self, car=car, cam=camera, vision=cv2):
+        'Initialization Function'
         self.cam_object = vision.VideoCapture(0)
         self.cam_object.set(3, self.PHOTO_WIDTH)
         self.cam_object.set(4, self.PHOTO_HEIGHT)
@@ -22,57 +25,66 @@ class Controller(object):
         self.car = car
 
     def get_photoname(self):
+        'Get photo name function'
         return self.photo_path.split("/")[-1]
 
     def create_temp_photo(self):
+        'Create temporary photo function'
         self.cam.delete_current_photo()
         img_data = self.cam.grab_image_data(self.cam_object)
         dir_path = self.cam.create_return_path("current_image")
         self.photo_path = self.cam.save_photo(dir_path, img_data)
 
     def up(self):
+        'Up function'
         new_path = self.cam.create_return_path("forward")
         print("forwards count = " +
-        str(len(os.listdir("./images/forward"))))
+              str(len(os.listdir("./images/forward"))))
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.forward(self.FWD_TIME_FRAME)
         self.create_temp_photo()
 
     def down(self):
+        'Down function'
         new_path = self.cam.create_return_path("reverse")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.reverse(self.FWD_TIME_FRAME)
         self.create_temp_photo()
 
     def right(self):
+        'Right function'
         new_path = self.cam.create_return_path("turn_right")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.turn_right(self.FWD_TIME_FRAME)
         self.create_temp_photo()
 
     def left(self):
+        'Left function'
         new_path = self.cam.create_return_path("turn_left")
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.turn_left(self.FWD_TIME_FRAME)
         self.create_temp_photo()
 
     def piv_right(self):
+        'Pivot right function'
         new_path = self.cam.create_return_path("pivot_right")
         print("pivot right count = " +
-        str(len(os.listdir("./images/pivot_right"))))
+              str(len(os.listdir("./images/pivot_right"))))
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.pivot_right(self.PIV_TIME_FRAME)
         self.create_temp_photo()
 
     def piv_left(self):
+        'Pivot left function'
         new_path = self.cam.create_return_path("pivot_left")
         print("pivot left count = " +
-        str(len(os.listdir("./images/pivot_left"))))
+              str(len(os.listdir("./images/pivot_left"))))
         self.cam.move_photo(self.photo_path, new_path + "/" + self.get_photoname())
         self.car.pivot_left(self.PIV_TIME_FRAME)
         self.create_temp_photo()
 
     def start_turtle(self):
+        'Start turtle windo function'
         turtle.setup(self.USER_CONTROLLER_WIDTH, self.USER_CONTROLLER_HEIGHT)
         self.window = turtle.Screen()
         self.window.title('snAIl Controller')
@@ -80,5 +92,6 @@ class Controller(object):
         self.window.bgpic('./logo/logo.gif')
 
     def exit_turtle(self):
+        'Exit turtle window function'
         del(self.cam_object)
         self.window.bye()
