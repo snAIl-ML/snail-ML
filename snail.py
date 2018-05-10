@@ -27,7 +27,7 @@ def get_img_path():
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
 
 def set_server_ip():
-    return input("Enter AI server IP: ")
+    return raw_input("Enter AI server IP: ")
 
 def AI_loop(
         counter=100,
@@ -53,7 +53,7 @@ def AI_loop(
     return user()
 
 def set_mode():
-    get_mode = input("Choose mode: 1 = User, 2 = AI: ")
+    get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")
     if get_mode == "1": user_loop()
     elif get_mode == "2":
         set_server_ip()
