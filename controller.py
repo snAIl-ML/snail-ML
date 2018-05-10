@@ -1,9 +1,9 @@
 'Controller Module'
+import turtle
+import os
+import cv2
 import car
 import camera
-import turtle
-import cv2
-import os
 
 class Controller(object):
     'Controller Class'
@@ -93,5 +93,5 @@ class Controller(object):
 
     def exit_turtle(self):
         'Exit turtle window function'
-        del(self.cam_object)
+        del self.cam_object
         self.window.bye()
