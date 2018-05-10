@@ -10,7 +10,7 @@ def init(echo, trigger):
     GPIO.setup(echo, GPIO.IN) #Echo pin
     GPIO.setup(trigger, GPIO.OUT) # Trigger pin
 
-def distance(echo, trigger, measure_unit = 'cm'):
+def distance(echo, trigger, measure_unit='cm'):
     init(echo, trigger)
     GPIO.output(trigger, False)
     # this is the bit your code was missing sending the trigger pulse
