@@ -49,3 +49,42 @@ def test_pivot_right_route_calls_pivot_right_function_and_redirects_to_index(moc
     assert (controller.piv_right.called)
     assert (controller.create_temp_photo.called)
     assert (controller.get_photoname.called)
+
+def test_ai_move_calls_get_image_path(mocker):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'get_img_path')
+    mocker.patch.object(controller, 'get_server_move')
+    response = tester.get('/ai_move?host_url=test', content_type='html/text')
+    assert (controller.get_img_path.called)
+
+def test_ai_move_calls_get_server_move_with_passed_in_url_and_image_path(mocker, monkeypatch):
+    tester = app.test_client()
+    monkeypatch.setattr(controller,'get_img_path', lambda: 'img_path_test')
+    mocker.patch.object(controller, 'get_server_move')
+    response = tester.get('/ai_move?host_url=test', content_type='html/text')
+    controller.get_server_move.assert_called_with('img_path_test','test')
+
+def test_ai_move_applies_forward_move(mocker, monkeypatch):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'get_img_path')
+    monkeypatch.setattr(controller,'get_server_move', lambda x, y: 'forward')
+    mocker.patch.object(controller, 'up')
+    response = tester.get('/ai_move?host_url=test', content_type='html/text')
+    assert (controller.up.called)
+
+def test_ai_move_applies_pivot_left_move(mocker, monkeypatch):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'create_temp_photo')
+    mocker.patch.object(controller, 'get_img_path')
+    monkeypatch.setattr(controller,'get_server_move', lambda x, y: 'pivot left')
+    mocker.patch.object(controller, 'piv_left')
+    response = tester.get('/ai_move?host_url=test', content_type='html/text')
+    assert (controller.piv_left.called)
+
+def test_ai_move_applies_pivot_right_move(mocker, monkeypatch):
+    tester = app.test_client()
+    mocker.patch.object(controller, 'get_img_path')
+    monkeypatch.setattr(controller,'get_server_move', lambda x, y: 'pivot right')
+    mocker.patch.object(controller, 'piv_right')
+    response = tester.get('/ai_move?host_url=test', content_type='html/text')
+    assert (controller.piv_right.called)

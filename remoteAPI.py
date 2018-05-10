@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, request
 from controller import Controller
 
 app = Flask(__name__, static_url_path='', static_folder='images/current_image')
@@ -23,6 +23,18 @@ def piv_left():
 @app.route("/piv_right")
 def piv_right():
     controller.piv_right()
+    return redirect('/')
+
+@app.route("/ai_move")
+def ai_move():
+    "this route is expected to be called with the"
+    "origins ML image upload URL as a query param"
+    host_url = request.args['host_url']
+    img_path = controller.get_img_path()
+    move = controller.get_server_move(img_path, host_url)
+    if move == 'forward': controller.up()
+    elif move == 'pivot right': controller.piv_right()
+    else: controller.piv_left()
     return redirect('/')
 
 if __name__ == "__main__":
