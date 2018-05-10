@@ -1,15 +1,15 @@
-import RPi.GPIO as GPIO
+'Car Module'
 import time
-import random
-from sensor import distance
+import RPi.GPIO as GPIO
 
 GPIO.setwarnings(False)
-front_echo = 1
-front_trigger = 7
-rear_echo = 17
-rear_trigger = 27
+FRONT_ECHO = 1
+FRONT_TRIGGER = 7
+REAR_ECHO = 17
+REAR_TRIGGER = 27
 
 def init():
+    'Init'
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(6, GPIO.OUT) # right side motor
     GPIO.setup(13, GPIO.OUT) # right side motor
@@ -17,13 +17,14 @@ def init():
     GPIO.setup(26, GPIO.OUT) # left side motor
 
     # front sensor setup
-    GPIO.setup(front_echo, GPIO.IN)
-    GPIO.setup(front_trigger, GPIO.OUT)
+    GPIO.setup(FRONT_ECHO, GPIO.IN)
+    GPIO.setup(FRONT_TRIGGER, GPIO.OUT)
     # rear sensor setup
-    GPIO.setup(rear_echo, GPIO.IN)
-    GPIO.setup(rear_trigger, GPIO.OUT)
+    GPIO.setup(REAR_ECHO, GPIO.IN)
+    GPIO.setup(REAR_TRIGGER, GPIO.OUT)
 
 def forward(time_frame):
+    'Forward'
     print('GOING FORWARD')
     init()
     GPIO.output(6, False) # right side wheels / input 1 & 2
@@ -35,6 +36,7 @@ def forward(time_frame):
     return True
 
 def pivot_left(time_frame):
+    'Left'
     print('PIVOTING LEFT')
     init()
     GPIO.output(6, False)
@@ -46,6 +48,7 @@ def pivot_left(time_frame):
     return True
 
 def pivot_right(time_frame):
+    'Right'
     print('PIVOTING RIGHT')
     init()
     GPIO.output(6, True)
@@ -57,6 +60,7 @@ def pivot_right(time_frame):
     return True
 
 def reverse(time_frame):
+    'Reverse'
     print('REVERSING')
     init()
     GPIO.output(6, True) # right side wheels / input 1 & 2
@@ -68,6 +72,7 @@ def reverse(time_frame):
     return True
 
 def turn_right(time_frame):
+    'Right'
     print('turning right')
     init()
     GPIO.output(6, False)
@@ -79,6 +84,7 @@ def turn_right(time_frame):
     return True
 
 def turn_left(time_frame):
+    'Left'
     print('turning left')
     init()
     GPIO.output(6, False)
