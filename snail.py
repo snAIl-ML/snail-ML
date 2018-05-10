@@ -9,23 +9,24 @@ URL = "http://192.168.48.116:8000/upload"
 
 def user_loop(control=Controller):
     'Loop for RC'
-    w = control()
-    w.create_temp_photo()
-    w.start_turtle()
-    w.window.onkey(w.up, 'Up')
-    w.window.onkey(w.down, 'Down')
-    w.window.onkey(w.right, 'r')
-    w.window.onkey(w.left, 'l')
-    w.window.onkey(w.piv_right, 'Right')
-    w.window.onkey(w.piv_left, 'Left')
-    w.window.onkey(w.exit_turtle, 'x')
-    w.window.listen()
+    pannel = control()
+    pannel.create_temp_photo()
+    pannel.start_turtle()
+    pannel.window.onkey(pannel.up, 'Up')
+    pannel.window.onkey(pannel.down, 'Down')
+    pannel.window.onkey(pannel.right, 'r')
+    pannel.window.onkey(pannel.left, 'l')
+    pannel.window.onkey(pannel.piv_right, 'Right')
+    pannel.window.onkey(pannel.piv_left, 'Left')
+    pannel.window.onkey(pannel.exit_turtle, 'x')
+    pannel.window.listen()
     turtle.mainloop()
 
 def user_supervision():
     'Control to continue or stop'
     get_mode = raw_input("Continue AI driving? 1 = Yes, 2 = No:  ")
-    if get_mode == "1": AI_loop()
+    if get_mode == "1":
+        ai_loop()
 
 def get_img_path():
     'Obtain image route'
@@ -35,9 +36,9 @@ def set_server_url():
     'Set the server url'
     URL = raw_input("Enter AI server URL: ")
 
-def AI_loop(
+def ai_loop(
         counter=100,
-        ai=get_server_move,
+        artificial_intelligence=get_server_move,
         user=user_supervision,
         img_path=get_img_path,
         control=Controller
@@ -45,8 +46,8 @@ def AI_loop(
     'Loop for AI'
     con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
     con.create_temp_photo()
-    while counter>0:
-        move = ai(img_path(), URL)
+    while counter > 0:
+        move = artificial_intelligence(img_path(), URL)
         print("move ======== ", move)
         if move == 'forward':
             con.up()
@@ -60,10 +61,11 @@ def AI_loop(
 def set_mode():
     'Choose RC mode or AI more'
     get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")
-    if get_mode == "1": user_loop()
+    if get_mode == "1":
+        user_loop()
     elif get_mode == "2":
         set_server_url()
-        AI_loop()
+        ai_loop()
 
 if __name__ == "__main__":
-   set_mode()
+    set_mode()
