@@ -3,7 +3,7 @@ import os
 from get_move_from_server import get_server_move
 import turtle
 
-URL = "http://192.168.48.116:8000/upload"
+AI_IP = "192.168.48.116:8000"
 
 def user_loop(control=Controller):
     w = control()
@@ -27,7 +27,7 @@ def get_img_path():
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
 
 def set_server_url():
-    URL = raw_input("Enter AI server URL: ")
+    AI_IP = raw_input("Enter AI server URL: ")
 
 def AI_loop(
         counter=100,
@@ -39,7 +39,8 @@ def AI_loop(
     con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
     con.create_temp_photo()
     while counter>0:
-        move = ai(img_path(), URL)
+        ai_url = "http://" + AI_IP + "/upload"
+        move = ai(img_path(), ai_url)
         print("move ======== ", move)
         if move == 'forward':
             con.up()
