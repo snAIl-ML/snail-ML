@@ -1,11 +1,14 @@
-from controller import Controller
+'Main module'
 import os
-from get_move_from_server import get_server_move
 import turtle
+from controller import Controller
+from get_move_from_server import get_server_move
+
 
 URL = "http://192.168.48.116:8000/upload"
 
 def user_loop(control=Controller):
+    'Loop for RC'
     w = control()
     w.create_temp_photo()
     w.start_turtle()
@@ -20,13 +23,16 @@ def user_loop(control=Controller):
     turtle.mainloop()
 
 def user_supervision():
+    'Control to continue or stop'
     get_mode = raw_input("Continue AI driving? 1 = Yes, 2 = No:  ")
     if get_mode == "1": AI_loop()
 
 def get_img_path():
+    'Obtain image route'
     return "./images/current_image/" + os.listdir("./images/current_image")[0]
 
 def set_server_url():
+    'Set the server url'
     URL = raw_input("Enter AI server URL: ")
 
 def AI_loop(
@@ -36,6 +42,7 @@ def AI_loop(
         img_path=get_img_path,
         control=Controller
     ):
+    'Loop for AI'
     con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
     con.create_temp_photo()
     while counter>0:
@@ -51,6 +58,7 @@ def AI_loop(
     return user()
 
 def set_mode():
+    'Choose RC mode or AI more'
     get_mode = raw_input("Choose mode: 1 = User, 2 = AI: ")
     if get_mode == "1": user_loop()
     elif get_mode == "2":
