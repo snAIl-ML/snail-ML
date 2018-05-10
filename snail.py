@@ -36,7 +36,7 @@ def AI_loop(
         img_path=get_img_path,
         control=Controller
     ):
-    ip = set_server_ip
+    ip = set_server_ip()
     con = control() # BE NICE NOT TO MAKE A NEW CONTROLLER EVERY LOOP?
     con.create_temp_photo()
     while counter>0:
