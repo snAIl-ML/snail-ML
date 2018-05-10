@@ -40,6 +40,7 @@ def AI_loop(
     con.create_temp_photo()
     while counter>0:
         ai_url = "http://" + AI_IP + "/upload"
+        print(ai_url)
         move = ai(img_path(), ai_url)
         print("move ======== ", move)
         if move == 'forward':
