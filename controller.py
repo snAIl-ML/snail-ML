@@ -84,10 +84,10 @@ class Controller(object):
         del(self.cam_object)
         self.window.bye()
 
-    def get_server_move(image_path, url):
+    def get_server_move(self, image_path, url):
         'Function to get response from the server'
         server_move = requests.post(url, files={'image': open(image_path, 'rb')})
         return server_move.text
 
-    def get_img_path():
+    def get_img_path(self):
         return "./images/current_image/" + os.listdir("./images/current_image")[0]
