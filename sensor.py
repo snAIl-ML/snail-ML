@@ -1,16 +1,19 @@
-import RPi.GPIO as GPIO
+'Sensor module'
 import time
+import RPi.GPIO as GPIO
 
 INVERSE_SPEED_OF_SOUND_CM_X_TWO = 0.000058
 INVERSE_SPEED_OF_SOUND_INCH_X_TWO = 0.000148
 
 def init(echo, trigger):
+    'Function for initialization'
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
     GPIO.setup(echo, GPIO.IN) #Echo pin
     GPIO.setup(trigger, GPIO.OUT) # Trigger pin
 
 def distance(echo, trigger, measure_unit='cm'):
+    'Main function'
     init(echo, trigger)
     GPIO.output(trigger, False)
     # this is the bit your code was missing sending the trigger pulse
